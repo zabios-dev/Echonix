@@ -69,7 +69,7 @@ export default function FinalCTA() {
                   style={{ textAlign: 'center', padding: '24px 0', color: '#1A3C2E' }}
                 >
                   <div style={{ fontSize: 48, marginBottom: 12 }}>🌞</div>
-                  <p style={{ fontWeight: 600, fontSize: 18, marginBottom: 8 }}>We'll be in touch soon!</p>
+                  <p style={{ fontWeight: 600, fontSize: 18, marginBottom: 8 }}>We&apos;ll be in touch soon!</p>
                   <p style={{ fontSize: 14, opacity: 0.7 }}>Expect a call within 2 hours.</p>
                 </motion.div>
               ) : (

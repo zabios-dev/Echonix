@@ -6,52 +6,7 @@ import CountUp from './ui/count-up'
 
 // Stats are defined inline when rendering per design requirements
 
-function easeOutQuart(t) {
-  return 1 - Math.pow(1 - t, 4)
-}
 
-function CountUp({ count, suffix, isDecimal }) {
-  const ref = useRef(null)
-  const started = useRef(false)
-
-  useEffect(() => {
-    if (count === null) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true
-          const duration = 1400
-          const startTime = performance.now()
-          const update = (now) => {
-            const elapsed = now - startTime
-            const progress = Math.min(elapsed / duration, 1)
-            const eased = easeOutQuart(progress)
-            const value = eased * count
-            if (ref.current) {
-              ref.current.textContent = isDecimal
-                ? value.toFixed(1) + suffix
-                : Math.round(value) + suffix
-            }
-            if (progress < 1) requestAnimationFrame(update)
-            else if (ref.current) {
-              ref.current.textContent = (isDecimal ? count.toFixed(1) : count) + suffix
-            }
-          }
-          requestAnimationFrame(update)
-        }
-      },
-      { threshold: 0.5 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [count, suffix, isDecimal])
-
-  return (
-    <span className="trustbar2__num" ref={ref} aria-label={`${count}${suffix}`}>
-      0
-    </span>
-  )
-}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -72,7 +27,7 @@ export default function TrustBar() {
         >
           <p>
             At Echonix, we believe energy should be clean, affordable, and accessible to everyone.
-            Our mission is to simplify Kerala's transition to solar, empowering homes and businesses
+            Our mission is to simplify Kerala&apos;s transition to solar, empowering homes and businesses
             to take control of their energy future.
           </p>
           <a href="#about" className="trustbar2__link">

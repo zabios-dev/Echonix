@@ -131,50 +131,6 @@ const Icon = ({ type, size = 22 }) => {
 
 export default function ServicesPage() {
   const [activeService, setActiveService] = useState('on-grid')
-  const [wizardStep, setWizardStep] = useState(0)
-  const [answers, setAnswers] = useState({
-    userType: '',
-    monthlyBill: '',
-    powerCuts: '',
-  })
-
-  // Recommendation logic
-  const getRecommendation = () => {
-    const { userType, monthlyBill, powerCuts } = answers
-
-    if (powerCuts === 'Frequent') {
-      return {
-        type: 'Hybrid Solar System',
-        size: userType === 'Residential' ? '5 kW Hybrid' : '10 kW+ Hybrid',
-        desc: `Since you experience frequent power cuts, a Hybrid system is essential. It keeps your lights, fans, and refrigerator running smoothly while exporting excess power to KSEB during grid hours.`,
-        subsidy: userType === 'Residential' ? 'Yes, eligible for ₹78,000 subsidy.' : 'Commercial systems get tax benefits (accelerated depreciation) instead of subsidies.',
-        savings: 'Can reduce your bi-monthly bill by up to 90%.',
-        whatsappMsg: `Hi Echonix, I used your Solar Wizard. Recommendation: ${userType === 'Residential' ? '5kW' : '10kW+'} Hybrid System. My details: ${userType}, Bill: ${monthlyBill}, Power Cuts: ${powerCuts}. Please contact me.`
-      }
-    } else if (powerCuts === 'Occasional' && monthlyBill !== 'Low') {
-      return {
-        type: 'Hybrid Solar System (or On-Grid + UPS)',
-        size: userType === 'Residential' ? '3 kW to 5 kW Hybrid' : '10 kW Hybrid',
-        desc: `A Hybrid system is highly recommended to manage occasional power cuts and clear high electricity charges. If you already own an inverter/UPS, a standard On-Grid system is a cheaper alternative.`,
-        subsidy: userType === 'Residential' ? 'Yes, eligible for up to ₹78,000 subsidy.' : 'Commercial units get 40% accelerated depreciation.',
-        savings: 'Brings your electricity bills to near-zero.',
-        whatsappMsg: `Hi Echonix, I used your Solar Wizard. Recommendation: Hybrid or On-Grid. My details: ${userType}, Bill: ${monthlyBill}, Power Cuts: ${powerCuts}. Please contact me.`
-      }
-    } else {
-      return {
-        type: 'On-Grid Solar System',
-        size: monthlyBill === 'Low' ? '2 kW On-Grid' : (userType === 'Residential' ? '3 kW to 5 kW On-Grid' : '10 kW+ On-Grid'),
-        desc: `Since power cuts are rare, a standard On-Grid system is your best financial investment. It is the most affordable setup, has the longest lifespan, and qualifies for the maximum subsidy, yielding the quickest ROI (under 4 years).`,
-        subsidy: userType === 'Residential' 
-          ? (monthlyBill === 'Low' ? 'Yes, eligible for ₹60,000 subsidy.' : 'Yes, eligible for ₹78,000 flat subsidy.') 
-          : 'Commercial installations qualify for accelerated depreciation and solar tax incentives.',
-        savings: 'Brings electricity bill down to ₹300 or less (KSEB fixed charges).',
-        whatsappMsg: `Hi Echonix, I used your Solar Wizard. Recommendation: On-Grid. My details: ${userType}, Bill: ${monthlyBill}, Power Cuts: ${powerCuts}. Please contact me.`
-      }
-    }
-  }
-
-  const recommendation = getRecommendation()
 
   return (
     <>
@@ -182,47 +138,38 @@ export default function ServicesPage() {
 
       <main className="services-page">
 
-        {/* Hero */}
-        <section className="services-page__hero">
-          <div className="services-page__hero-inner">
-            <p className="section-eyebrow">Solar Solutions</p>
-
-            <h1 className="services-page__heading">
-              Power your future
-              <br />
-              <span>your way.</span>
-            </h1>
-
-            <p className="section-subtitle">
-              From grid-connected systems to complete energy independence,
-              choose the solar solution that fits your home, business and
-              energy goals.
-            </p>
-          </div>
-        </section>
-
-        {/* New Interactive Service Showcase */}
+        {/* Interactive service showcase */}
         <section className="services-selector" aria-labelledby="solar-solutions-heading">
           <div className="services-selector__inner">
 
             <div className="services-selector__intro">
-              <div className="services-selector__eyebrow">
+              <div className="services-selector__intro-orbit" aria-hidden="true">
                 <span />
-                <p>Explore Solar Solutions</p>
                 <span />
+                <i />
+              </div>
+              <div className="services-selector__intro-copy">
+                <div className="services-selector__eyebrow">
+                  <span />
+                  <p>Solar, tailored to you</p>
+                </div>
+
+                <h1 id="solar-solutions-heading">
+                  Energy that fits<br />
+                  <strong>the way you live.</strong>
+                </h1>
+
+                <p>
+                  Start with what matters most — lower bills, reliable backup,
+                  or complete independence — and find the system built for it.
+                </p>
               </div>
 
-              <h2 id="solar-solutions-heading">
-                Find the right solar system
-                <br />
-                <strong>for your energy needs.</strong>
-              </h2>
-
-              <p>
-                Whether you want lower electricity bills, reliable backup,
-                or complete energy independence, Echonix has a solution
-                designed around the way you use power.
-              </p>
+              <div className="services-selector__intro-steps" aria-label="How to choose a solar system">
+                <div><b>01</b><span>Choose your<br />priority</span></div>
+                <div><b>02</b><span>Explore your<br />system</span></div>
+                <div><b>03</b><span>Make sunlight<br />work harder</span></div>
+              </div>
             </div>
 
             <div className="services-selector__showcase">
@@ -270,16 +217,9 @@ export default function ServicesPage() {
 
                 <div className="services-selector__help">
                   <span>Not sure which system is right for you?</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      document
-                        .getElementById('solar-wizard')
-                        ?.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                  >
-                    Use our Solar Wizard →
-                  </button>
+                  <a href="https://wa.me/919539220888?text=Hi%20Echonix%2C%20I%20need%20help%20choosing%20a%20solar%20system." target="_blank" rel="noopener noreferrer">
+                    Talk to a solar expert →
+                  </a>
                 </div>
               </div>
 
@@ -370,7 +310,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Solar Wizard */}
+        {/* The retired Smart Calculator is intentionally excluded from this page.
         <section
           className="wizard-section"
           id="solar-wizard"
@@ -389,7 +329,7 @@ export default function ServicesPage() {
                 <p>
                   Use our interactive Solar Recommendation Wizard. Answer
                   three simple questions, and our algorithms will calculate
-                  your recommended size and type based on Kerala's local
+                  your recommended size and type based on Kerala&apos;s local
                   grid conditions.
                 </p>
               </div>
@@ -664,6 +604,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+        */}
 
       </main>
 

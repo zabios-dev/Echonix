@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 import FloatingWhatsApp from '../components/FloatingWhatsApp'
 import SectionReveal from '../components/SectionReveal'
 
+
 export const metadata: Metadata = {
   title: 'Solar Panel Installation in Kerala | Echonix Technology',
   description:

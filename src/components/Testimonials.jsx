@@ -55,7 +55,7 @@ function TestiCard({ t }) {
   return (
     <div className="tr__card">
       <StarRow count={t.stars} />
-      <blockquote className="tr__quote">"{t.quote}"</blockquote>
+      <blockquote className="tr__quote">&quot;{t.quote}&quot;</blockquote>
       <div className="tr__customer">
         <div className="tr__avatar" aria-hidden="true">{t.avatar}</div>
         <div className="tr__meta">

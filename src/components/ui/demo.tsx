@@ -58,7 +58,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            Kerala's #1 Choice<br />
+            Kerala&apos;s #1 Choice<br />
             for Solar<br />
             <em>Installation</em>
           </motion.h1>
