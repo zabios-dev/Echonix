@@ -8083,6 +8083,18 @@
     z-index: 0;
   }
 
+  /* ── Poster / fallback image (shown while video loads) ── */
+  .hero2__poster {
+    position: absolute;
+    inset: 0;
+    background-image: url('/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transition: opacity 0.8s ease;
+  }
+
   .hero2__video {
     position: absolute;
     inset: 0;
@@ -8091,11 +8103,14 @@
     object-fit: cover;
     object-position: center;
     display: block;
+    z-index: 1;
+    transition: opacity 0.8s ease;
   }
 
   .hero2__overlay {
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: linear-gradient(105deg,
         rgba(0, 0, 0, 0.72) 0%,
         rgba(0, 0, 0, 0.48) 55%,

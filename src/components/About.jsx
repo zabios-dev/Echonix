@@ -6,7 +6,6 @@ import { viewportOnce } from '../hooks/animations'
 
 export default function About() {
   const [playing, setPlaying] = useState(false)
-  const videoId = 'BTCX11o-3kw' // Updated YouTube Video ID for About Us
 
   return (
     <section className="about" id="about" aria-labelledby="about-heading">
@@ -48,15 +47,21 @@ export default function About() {
         >
           <div className="about__image-frame">
             {playing ? (
-              <iframe
+              <video
                 width="100%"
                 height="100%"
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-                title="Echonix Solar Corporate Video"
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                style={{ border: 0, display: 'block', width: '100%', height: '100%' }}
+                src="https://res.cloudinary.com/x2u7ub0n/video/upload/v1791043825/hero.webm"
+                poster="/about-team.png"
+                controls
+                autoPlay
+                preload="none"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: 'inherit',
+                }}
               />
             ) : (
               <button

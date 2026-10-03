@@ -17,6 +17,14 @@ export default function Hero() {
     <section className="hero2" aria-label="Hero">
       {/* ── Video Background ── */}
       <div className="hero2__bg">
+        {/* Fallback image — visible until video is ready */}
+        <div
+          className="hero2__poster"
+          style={{ opacity: loaded ? 0 : 1 }}
+          aria-hidden="true"
+        />
+
+        {/* Video — fades in once ready */}
         <video
           ref={videoRef}
           className="hero2__video"
@@ -28,6 +36,7 @@ export default function Hero() {
           preload="auto"
           onCanPlay={() => setLoaded(true)}
           aria-hidden="true"
+          style={{ opacity: loaded ? 1 : 0 }}
         />
         {/* Dark gradient overlay */}
         <div className="hero2__overlay" />
