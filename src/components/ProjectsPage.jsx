@@ -6,6 +6,7 @@ import Footer from './Footer'
 import FloatingWhatsApp from './FloatingWhatsApp'
 import FeaturedProjects from './FeaturedProjects'
 import ProjectGrid from './ProjectGrid'
+import PageHero from './PageHero'
 
 export default function ProjectsPage() {
   useEffect(() => {
@@ -16,19 +17,21 @@ export default function ProjectsPage() {
     <>
       <Navbar />
       <main className="projects-page">
-        {/* Page hero strip */}
-        <div className="projects-page__hero" aria-hidden="false">
-          <div className="gallery__inner">
-            <p className="section-eyebrow">Our Portfolio</p>
-            <h1 className="projects-page__heading">Projects Across Kerala</h1>
-            <p className="section-subtitle">
-              Real installations. Real results. From homes to institutions — every project built to last.
-            </p>
-          </div>
-        </div>
+        <PageHero
+          eyebrow="Our Portfolio"
+          title="Projects across<br /><strong>Kerala &amp; beyond.</strong>"
+          description="Real installations. Real results. From residential rooftops to large-scale commercial and government institutions — engineered for decades of clean, dependable power."
+          highlights={[
+            { label: '3.5+ MW', value: 'Installed<br />Capacity' },
+            { label: '1000+', value: 'Projects<br />Commissioned' },
+            { label: '100%', value: 'Tier-1 Solar<br />Modules' },
+          ]}
+          highlightsLabel="Key project metrics"
+          headingId="projects-page-heading"
+        />
 
-        {/* Featured projects section */}
-        <FeaturedProjects hideHeader={true} />
+        {/* Featured projects section — hidden for now */}
+        {/* <FeaturedProjects hideHeader={true} /> */}
 
         {/* All remaining projects + search/filter */}
         <ProjectGrid hideHeader={true} />

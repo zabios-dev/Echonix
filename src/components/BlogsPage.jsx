@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import FloatingWhatsApp from './FloatingWhatsApp'
 import blogs from '../data/blogs'
+import PageHero from './PageHero'
 
 const categories = ['All', 'Subsidies', 'Guides', 'Maintenance']
 
@@ -24,16 +25,18 @@ export default function BlogsPage() {
     <>
       <Navbar />
       <main className="blogs-page">
-        {/* Header Hero */}
-        <div className="blogs-page__hero">
-          <div className="blogs-page__hero-inner">
-            <p className="section-eyebrow">News & Updates</p>
-            <h1 className="blogs-page__heading">Guides & Solar Insights</h1>
-            <p className="section-subtitle">
-              Learn about KSEB net metering, the PM-Surya Ghar subsidy scheme, and panel upkeep during Kerala monsoons.
-            </p>
-          </div>
-        </div>
+        <PageHero
+          eyebrow="News &amp; Articles"
+          title="Guides, insights &amp;<br /><strong>solar updates.</strong>"
+          description="Learn about KSEB net metering, the PM-Surya Ghar subsidy scheme, and panel upkeep during Kerala monsoons."
+          highlights={[
+            { label: 'Subsidy', value: 'PM-Surya Ghar<br />Scheme' },
+            { label: 'Net Meter', value: 'KSEB Grid<br />Guidelines' },
+            { label: 'Monsoon', value: 'Panel Care &amp;<br />Upkeep' },
+          ]}
+          highlightsLabel="Key knowledge areas"
+          headingId="blogs-page-heading"
+        />
 
         {/* Filter Section */}
         <div className="blogs-page__filters-container">
