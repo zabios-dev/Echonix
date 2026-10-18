@@ -8637,18 +8637,51 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   HERO2 SOCIAL LINKS (Laptop/Desktop View: min-width: 601px)
-   Refined spacing, 40px outline icons, enhanced contrast,
-   and visual balance beneath CTAs
+   HERO2 LAPTOP/DESKTOP CENTERED LAYOUT (min-width: 601px)
+   Centers headline, description, CTA buttons, and social group
    ───────────────────────────────────────────────────────────── */
 @media (min-width: 601px) {
+  .hero2__inner {
+    justify-content: center;
+  }
+
+  .hero2__content {
+    max-width: 840px;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    gap: 26px;
+  }
+
+  .hero2__eyebrow {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero2__headline {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero2__subtext {
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero2__ctas {
+    justify-content: center;
+    margin: 4px auto 0 auto;
+    width: 100%;
+  }
+
   .hero2__social {
     gap: 14px;
     width: 100%;
     max-width: 364px;
-    margin: 8px 0 0 0;
+    margin: 10px auto 0 auto;
     padding: 0;
-    align-self: flex-start;
+    align-self: center;
   }
 
   .hero2__social-header {
