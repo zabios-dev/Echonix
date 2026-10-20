@@ -23,7 +23,7 @@ export default function ProjectsPage() {
           description="Real installations. Real results. From residential rooftops to large-scale commercial and government institutions — engineered for decades of clean, dependable power."
           highlights={[
             { label: '3.5+ MW', value: 'Installed<br />Capacity' },
-            { label: '1000+', value: 'Projects<br />Commissioned' },
+            { label: '500+', value: 'Projects<br />Commissioned' },
             { label: '100%', value: 'Tier-1 Solar<br />Modules' },
           ]}
           highlightsLabel="Key project metrics"

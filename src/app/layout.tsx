@@ -57,9 +57,9 @@ const jsonLd = {
         longitude: '75.9238',
       },
       sameAs: [
-        'https://www.instagram.com/echonixtechnology?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
-        'https://www.linkedin.com/company/echonix-technology-pvt-ltd/home/',
-        'https://www.facebook.com/profile.php?id=100083322813630',
+        'https://www.instagram.com/echonixtechnology/',
+        'https://in.linkedin.com/company/echonix-technology-pvt-ltd',
+        'https://www.facebook.com/p/Echonix-100083322813630/',
       ],
     },
     {

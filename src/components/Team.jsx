@@ -5,7 +5,7 @@ import { fadeUp, viewportOnce } from '../hooks/animations'
 
 const team = [
   {
-    name: 'C.H. Muhammad',
+    name: 'Suneer',
     role: 'Founder & Managing Director',
     bio: 'Pioneered electrical engineering contracting in Tirur since 1985. Directs overall strategy and ensures long-term operational integrity.',
     experience: '40+ Years Experience',
@@ -13,15 +13,15 @@ const team = [
     avatar: 'CH'
   },
   {
-    name: 'Engr. Faisal Rahiman',
-    role: 'Head of Solar Engineering',
+    name: 'Jabirali K',
+    role: 'GM - Marketing',
     bio: 'B.Tech in Electrical Engineering. Has designed and supervised over 3.5 MW of rooftop solar installations across institutional and residential premises in Kerala.',
     experience: '12+ Years Experience',
     cert: 'ANERT Certified Solar Installer',
     avatar: 'FR'
   },
   {
-    name: 'Suresh Kumar',
+    name: 'Na',
     role: 'Senior Operations & Liaison',
     bio: 'Specialist in government liaisons. Manages all KSEB net-metering installations, feasibility reports, and PM-Surya Ghar subsidy claims.',
     experience: '15+ Years Experience',
@@ -29,7 +29,7 @@ const team = [
     avatar: 'SK'
   },
   {
-    name: 'Vipin Das',
+    name: 'Still development',
     role: 'Lead Installation Technician',
     bio: 'Supervises mechanical structural integrity, wind load stability calculations, and precision electrical cabling on site.',
     experience: '10+ Years Experience',
@@ -51,9 +51,12 @@ export default function Team() {
         >
           <motion.p className="section-eyebrow" variants={fadeUp}>Our Experts</motion.p>
           <motion.h2 className="section-title" id="team-heading" variants={fadeUp}>Meet Echonix Solar Team</motion.h2>
-          <motion.p className="section-subtitle" variants={fadeUp}>
-            Highly experienced electrical engineers and certified technicians dedicated to delivering quality rooftop solar systems.
-          </motion.p>
+          <motion.p
+  className="section-subtitle text-center"
+  variants={fadeUp}
+>
+  Highly experienced electrical engineers and certified technicians dedicated to delivering quality rooftop solar systems.
+</motion.p>
         </motion.div>
 
         <div className="team__grid" role="list">

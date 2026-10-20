@@ -22,7 +22,7 @@ export default function ProjectGrid({ hideHeader = false }) {
       <div className="gallery__inner">
         {hideHeader ? (
           <h2 className="projects-section-title">
-            All Projects Portfolio
+            Some of Our Major Projects
           </h2>
         ) : (
           <motion.div

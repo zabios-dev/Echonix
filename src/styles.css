@@ -1476,6 +1476,11 @@
   margin: 0;
 }
 
+/* Keep constrained section descriptions centered within their header. */
+.section-header .section-subtitle {
+  margin-inline: auto;
+}
+
 /* ═══════════════════════════════════════════════════
    PHASE 4 — SERVICES SECTION
    Desktop: 4-col grid | Mobile: horizontal carousel
@@ -3851,10 +3856,137 @@
   max-width: 280px;
 }
 
-.footer__address {
+/* ── Our Branches Section in Footer ── */
+.footer__branches {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 2px 0;
+}
+
+.footer__branches-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 246, 242, 0.7);
+  margin: 0;
+}
+
+.footer__branches-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.footer__branch-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm, 8px);
+  padding: 14px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer__branch-card:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(245, 166, 35, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.footer__branch-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.footer__branch-city-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__branch-pin-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: var(--clr-amber);
+  flex-shrink: 0;
+}
+
+.footer__branch-pin-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer__branch-city {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: -0.01em;
+}
+
+.footer__branch-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(245, 166, 35, 0.12);
+  color: var(--clr-amber);
+  border: 1px solid rgba(245, 166, 35, 0.24);
+  white-space: nowrap;
+}
+
+.footer__branch-address {
   font-style: normal;
-  font-size: 0.88rem;
-  line-height: 1.6;
+  font-size: 0.81rem;
+  line-height: 1.5;
+  color: rgba(247, 246, 242, 0.72);
+  margin: 0;
+}
+
+.footer__branch-address .address-line {
+  display: block;
+}
+
+.footer__branch-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--clr-amber);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.footer__branch-map-link:hover {
+  color: #ffc059;
+  gap: 7px;
+}
+
+.footer__branch-map-arrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.footer__branch-map-link:hover .footer__branch-map-arrow {
+  transform: translate(2px, -2px);
 }
 
 /* hide mobile-only contact panels on desktop */
@@ -3876,10 +4008,6 @@
 .footer__contact-icon svg {
   width: 18px;
   height: 18px;
-  display: block;
-}
-
-.footer__address .address-line {
   display: block;
 }
 
@@ -3951,39 +4079,38 @@
   color: var(--clr-white);
 }
 
-.footer__social-links--mobile {
-  display: none;
-}
-
 .footer__social-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
+  margin-top: 2px;
 }
 
 .footer__social-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   color: var(--clr-white);
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .footer__social-chip svg {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
 }
 
 .footer__social-chip:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  background: var(--clr-amber);
+  color: #121212;
+  border-color: var(--clr-amber);
+  box-shadow: 0 4px 12px rgba(245, 166, 35, 0.35);
 }
 
 /* Footer mobile responsiveness */
@@ -4034,8 +4161,18 @@
     line-height: 1.5;
   }
 
-  .footer__address {
-    display: none;
+  .footer__branches {
+    margin-top: 6px;
+    gap: 10px;
+  }
+
+  .footer__branches-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .footer__branch-card {
+    padding: 13px 14px;
   }
 
   .footer__mobile-contact-split {
@@ -4051,21 +4188,14 @@
     gap: 10px;
   }
 
-  .footer__mobile-address--compact {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.70);
-  }
-
   .footer__mobile-working-areas {
-    margin: 4px 0 0 0;
+    margin: 8px 0 0 0;
     font-size: 12px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.50);
   }
 
-  .footer__contact-info {
+  .footer__contact-info:not(.footer__social-contact) {
     display: none;
   }
 
@@ -4149,13 +4279,6 @@
     display: none;
   }
 
-  .footer__social-links--mobile {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
   .footer__links-list .footer__link {
     font-size: 14px;
     font-weight: 400;
@@ -4170,19 +4293,19 @@
     color: var(--clr-white);
   }
 
-  .footer__social-links--mobile {
-    margin-bottom: 0;
-  }
-
   .footer__social-links {
-    gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
   }
 
   .footer__social-chip {
-    width: 36px;
-    height: 36px;
-    border: none;
+    width: 38px;
+    height: 38px;
     background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.14);
   }
 
   .footer__social-chip svg {
@@ -6530,7 +6653,7 @@
     color: rgba(255, 255, 255, 0.55);
   }
 
-  .footer__contact-info {
+  .footer__contact-info:not(.footer__social-contact) {
     display: none;
   }
 
@@ -7795,11 +7918,101 @@
   padding: 0 2px;
 }
 
-@media (max-width: 540px) {
+/* Contact details sit beneath the social links in the Follow column. */
+.footer__social-contact {
+  gap: 7px;
+  margin-top: 2px;
+  font-size: 0.8rem;
+}
+
+.footer__social-contact .contact-line {
+  margin: 0;
+  gap: 5px;
+  color: rgba(247, 246, 242, 0.72);
+}
+
+.footer__social-contact .label {
+  color: rgba(247, 246, 242, 0.9);
+  font-weight: 600;
+}
+
+.footer__contact-items {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer__contact-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer__social-contact .footer__contact-link {
+  color: rgba(247, 246, 242, 0.72);
+  transition: color 0.2s ease;
+}
+
+.footer__social-contact .footer__contact-link:hover {
+  color: var(--clr-amber);
+}
+
+@media (max-width: 768px) {
+  /* Contact block: separated from socials, stacked cleanly */
+  .footer__social-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer__social-contact .contact-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin: 0;
+  }
+
+  /* Label matches COMPANY / SERVICES / FOLLOW style */
+  .footer__social-contact .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Phone numbers on separate lines */
+  .footer__contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .footer__contact-item {
+    display: block;
+  }
+
   .footer__link-sep {
     display: none;
   }
 
+  /* Easy-to-tap links */
+  .footer__contact-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+}
+
+@media (max-width: 540px) {
   /* Each phone on its own line */
   .footer__contact-info .contact-line {
     flex-wrap: wrap;
@@ -8348,7 +8561,7 @@
     color: rgba(255, 255, 255, 0.50);
   }
 
-  .footer__contact-info {
+  .footer__contact-info:not(.footer__social-contact) {
     display: none;
   }
 

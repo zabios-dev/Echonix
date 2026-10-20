@@ -115,7 +115,7 @@ export default function Hero() {
             <div className="hero2__social-icons">
               {/* Instagram */}
               <a
-                href="https://www.instagram.com/echonixtechnology"
+                href="https://www.instagram.com/echonixtechnology/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero2__social-icon"
@@ -129,7 +129,7 @@ export default function Hero() {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/echonixtechnology"
+                href="https://www.facebook.com/p/Echonix-100083322813630/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero2__social-icon"
@@ -143,7 +143,7 @@ export default function Hero() {
 
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/company/echonixtechnology"
+                href="https://in.linkedin.com/company/echonix-technology-pvt-ltd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero2__social-icon"
