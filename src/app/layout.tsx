@@ -23,12 +23,15 @@ export const metadata: Metadata = {
     title: 'Solar Panel Installation in Kerala | Echonix Technology',
     description:
       'Professional solar installation across Kerala. Up to ₹78,000 government subsidy. MNRE empanelled EPC company.',
-    url: 'https://echonix.in',
+    url: 'https://www.echonix.in',
     siteName: 'Echonix Technology',
     locale: 'en_IN',
     type: 'website',
   },
-  metadataBase: new URL('https://echonix.in'),
+  metadataBase: new URL('https://www.echonix.in'),
+  alternates: {
+    canonical: '/',
+  },
   verification: {
     google: 'y0DGWeL2Ij-4IoHp4WgdBKg546tY3spR2kdA5qqC2uU',
   },
