@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import LenisProvider from '../components/LenisProvider'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: {
@@ -119,6 +120,7 @@ export default function RootLayout({
       </head>
       <body>
         <LenisProvider>{children}</LenisProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
