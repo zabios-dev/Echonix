@@ -1,8 +1,16 @@
 import type { MetadataRoute } from 'next'
 
+const BASE_URL = 'https://www.echonix.in'
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: '*', allow: '/' },
-    sitemap: 'https://echonix.in/sitemap.xml',
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
+      },
+    ],
+    sitemap: `${BASE_URL}/sitemap.xml`,
   }
 }
