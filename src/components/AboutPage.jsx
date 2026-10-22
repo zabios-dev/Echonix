@@ -30,7 +30,7 @@ export default function AboutPage() {
           headingId="about-page-heading"
         />
         <About />
-        <Team />
+       {/* <Team /> */} 
       </main>
       <Footer />
       <FloatingWhatsApp />
