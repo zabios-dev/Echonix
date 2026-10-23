@@ -34,7 +34,7 @@ export default function Footer() {
       city: 'Tirur',
       addressLines: [
         'Tirur Rd, near OLD VISWAS THEATER,',
-        'Tirur, BP Angadi, Kerala - 676102',
+        'North BP Angadi, Tirur, Kerala - 676102',
       ],
       mapUrl: 'https://maps.app.goo.gl/UGgr2VUAZdg4TGLMA',
     },
