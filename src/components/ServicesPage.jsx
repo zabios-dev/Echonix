@@ -64,7 +64,7 @@ const products = [
   {
     id: 'inverters',
     number: '04',
-    title: 'Solar Inverters',
+    title: 'Home Inverters & Batteries',
     shortTitle: 'Inverters',
     tagline: 'High-efficiency power conversion for your solar system.',
     desc: 'High-efficiency inverters compatible with major solar panel brands and battery systems. We supply, install and commission reliable inverter solutions for on-grid, off-grid and hybrid systems.',

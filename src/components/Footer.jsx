@@ -18,8 +18,8 @@ export default function Footer() {
   const serviceLinks = [
     { label: 'On-Grid Solar', href: isHomePage ? '#services' : '/#services' },
     { label: 'Off-Grid Solar', href: isHomePage ? '#services' : '/#services' },
-    { label: 'Solar PMC', href: isHomePage ? '#services' : '/#services' },
-    { label: 'Solar Inverter', href: isHomePage ? '#services' : '/#services' },
+    { label: 'Hybrid Solar', href: isHomePage ? '#services' : '/#services' },
+    { label: 'Home Inverters & Batteries', href: isHomePage ? '#services' : '/#services' },
   ]
 
   const phoneLinks = [
