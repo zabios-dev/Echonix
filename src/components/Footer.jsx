@@ -23,8 +23,8 @@ export default function Footer() {
   ]
 
   const phoneLinks = [
-    { href: 'tel:+919539220888', label: '+91 9539 22 08 88' },
-    { href: 'tel:+919633059966', label: '+91 9633 05 99 66' },
+    { href: 'tel:+919207220883', label: '+91 9207220883' },
+    { href: 'tel:+919539220888', label: '+91 9539220888' },
   ]
 
   const workingAreas = ['Tirur', 'Kozhikode', 'Cherpulassery', 'Malappuram', 'Wandoor']
@@ -33,16 +33,16 @@ export default function Footer() {
     {
       city: 'Tirur',
       addressLines: [
-        '31/63F, Police Lane, Tirur,',
-        'Malappuram, Kerala - 676101',
+        'Tirur Rd, near OLD VISWAS THEATER,',
+        'Tirur, BP Angadi, Kerala - 676102',
       ],
       mapUrl: 'https://maps.app.goo.gl/UGgr2VUAZdg4TGLMA',
     },
     {
       city: 'Kozhikode',
       addressLines: [
-        '2nd Floor, Mavoor Road,',
-        'Kozhikode, Kerala - 673004',
+        'Palace Rd, opp. KSEB SUB STATION,',
+        'Mankave, Kozhikode, Kerala - 673007',
       ],
       mapUrl: 'https://maps.app.goo.gl/uXpnNkPsss4np3gV7',
     },
