@@ -71,7 +71,7 @@ Echonix/
    - `Services.jsx` displays 4 core solar solution categories with animated tab switching and sticky image previews.
 
 3. **Services & Interactive Solar Wizard (`ServicesPage.jsx`)**:
-   - Details the 4 core offerings: **On-Grid Solar**, **Off-Grid Solar**, **Hybrid Solar**, and **Solar Inverters**.
+   - Details the 4 core offerings: **On-Grid Solar**, **Off-Grid Solar**, **Hybrid Solar**, and **Home Inverters & Batteries**.
    - Includes a 3-step interactive **Solar Quiz Wizard** that collects user property type, monthly KSEB bill range, and power cut frequency to generate tailored system recommendations (size, subsidy eligibility, estimated savings) and route inquiries directly to WhatsApp.
 
 4. **Regional SEO & Conversion**:

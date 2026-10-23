@@ -9,8 +9,8 @@ import { useIsMobile } from '../hooks/useIsMobile'
 const services = [
   { label: 'On-Grid Solar', href: '/services#on-grid' },
   { label: 'Off-Grid Solar', href: '/services#off-grid' },
-  { label: 'Solar PMC', href: '/services#pmc' },
-  { label: 'Solar Inverters', href: '/services#inverters' },
+  { label: 'Hybrid Solar', href: '/services#hybrid' },
+  { label: 'Home Inverters & Batteries', href: '/services#inverters' },
 ]
 
 // Desktop dropdown variants

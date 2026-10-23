@@ -43,15 +43,19 @@ const services = [
     image: "/images/services/hybrid.jpg",
   },
   {
-    id: "inverters",
-    number: "04",
-    title: "Solar Inverters",
-    description:
-      "High-efficiency inverters compatible with major solar panel brands and battery systems. We supply, install and commission reliable inverter solutions for on-grid, off-grid and hybrid systems.",
-    tags: ["High Conversion Efficiency", "Multi-Brand Compatible", "Pro Installation"],
-    icon: Cpu,
-    image: "/images/services/inverter.jpg",
-  },
+  id: "inverters",
+  number: "04",
+  title: "Home Inverters & Batteries",
+  description:
+    "Reliable home inverter solutions with tubular and lithium batteries to provide dependable backup power during outages. We supply, install and commission efficient inverter and battery systems tailored to your home's power requirements.",
+  tags: [
+    "Tubular Batteries",
+    "Lithium Batteries",
+    "Professional Installation",
+  ],
+  icon: Cpu,
+  image: "/images/services/inverter.jpg",
+},
 ];
 
 export default function Services() {
