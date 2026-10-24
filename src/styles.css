@@ -10590,6 +10590,7 @@
   border-radius: 32px;
   background: #12382d;
   box-shadow: 0 24px 70px rgba(16, 39, 31, .13);
+  scroll-margin-top: 105px;
 }
 
 .services-selector__menu {
@@ -11089,6 +11090,7 @@
   .ssp-mobile {
     display: block;
     padding: 0 4px;
+    scroll-margin-top: 85px;
   }
 
   /* Section heading */

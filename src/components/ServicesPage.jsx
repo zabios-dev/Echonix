@@ -204,14 +204,84 @@ export default function ServicesPage() {
   const [activeService, setActiveService] = useState('on-grid')
   const [mobileTab, setMobileTab] = useState('on-grid')
 
-  // Read URL hash on mount to deep-link to a specific service
-  // e.g. /services#hybrid sets both desktop and mobile to hybrid
+  // Deep-link selection and smooth scroll to Explore Solutions section
   useEffect(() => {
     const validIds = ['on-grid', 'off-grid', 'hybrid', 'inverters']
-    const hash = window.location.hash.replace('#', '')
+
+    const scrollToSection = () => {
+      const isMobile = window.innerWidth < 768
+      const target = isMobile
+        ? document.querySelector('.ssp-mobile') || document.querySelector('.services-selector')
+        : document.querySelector('.services-selector__showcase') || document.querySelector('.services-selector')
+
+      if (target) {
+        const navOffset = isMobile ? 85 : 110
+        const rect = target.getBoundingClientRect()
+        const targetTop = rect.top + window.pageYOffset - navOffset
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth',
+        })
+      }
+    }
+
+    const selectService = (serviceId, shouldScroll = true) => {
+      if (!serviceId || !validIds.includes(serviceId)) return
+      setActiveService(serviceId)
+      setMobileTab(serviceId)
+
+      if (shouldScroll) {
+        setTimeout(() => {
+          scrollToSection()
+        }, 100)
+      }
+    }
+
+    // 1. Initial check on mount from hash or sessionStorage
+    let initialService = ''
+    const hash = window.location.hash.replace('#', '').trim()
     if (validIds.includes(hash)) {
-      setActiveService(hash)
-      setMobileTab(hash)
+      initialService = hash
+    } else {
+      try {
+        const stored = sessionStorage.getItem('echonix_selected_service')
+        if (stored && validIds.includes(stored)) {
+          initialService = stored
+          sessionStorage.removeItem('echonix_selected_service')
+        }
+      } catch (_) {}
+    }
+
+    let t1, t2
+    if (initialService) {
+      selectService(initialService, true)
+      t1 = setTimeout(() => scrollToSection(), 400)
+      t2 = setTimeout(() => scrollToSection(), 800)
+    }
+
+    // 2. Listen to browser hashchange (back/forward button or hash modification)
+    const handleHashChange = () => {
+      const currentHash = window.location.hash.replace('#', '').trim()
+      if (validIds.includes(currentHash)) {
+        selectService(currentHash, true)
+      }
+    }
+
+    // 3. Listen to custom service-select event (fired by Navbar)
+    const handleCustomSelect = (e) => {
+      if (e?.detail && validIds.includes(e.detail)) {
+        selectService(e.detail, true)
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    window.addEventListener('service-select', handleCustomSelect)
+
+    return () => {
+      if (t1) clearTimeout(t1)
+      if (t2) clearTimeout(t2)
+      window.removeEventListener('hashchange', handleHashChange)
+      window.removeEventListener('service-select', handleCustomSelect)
     }
   }, [])
 
@@ -274,7 +344,13 @@ export default function ServicesPage() {
                         className={`services-selector__item ${
                           isActive ? 'is-active' : ''
                         }`}
-                        onClick={() => setActiveService(service.id)}
+                        onClick={() => {
+                          setActiveService(service.id)
+                          setMobileTab(service.id)
+                          if (typeof window !== 'undefined' && window.history.replaceState) {
+                            window.history.replaceState(null, '', `#${service.id}`)
+                          }
+                        }}
                         aria-pressed={isActive}
                       >
                         <span className="services-selector__number">
@@ -400,7 +476,13 @@ export default function ServicesPage() {
                   aria-controls={`ssp-panel-${item.id}`}
                   id={`ssp-tab-${item.id}`}
                   className={`ssp-mobile__tab${mobileTab === item.id ? ' is-active' : ''}`}
-                  onClick={() => setMobileTab(item.id)}
+                  onClick={() => {
+                    setMobileTab(item.id)
+                    setActiveService(item.id)
+                    if (typeof window !== 'undefined' && window.history.replaceState) {
+                      window.history.replaceState(null, '', `#${item.id}`)
+                    }
+                  }}
                 >
                   {item.tabLabel}
                 </button>

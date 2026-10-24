@@ -94,6 +94,26 @@ export default function Navbar() {
     setMobileServicesOpen(false)
   }
 
+  const handleServiceClick = (e, href) => {
+    const hash = href.includes('#') ? href.split('#')[1] : ''
+    if (hash) {
+      try {
+        sessionStorage.setItem('echonix_selected_service', hash)
+      } catch (_) {}
+    }
+
+    setServicesDropdownOpen(false)
+    if (mobileOpen) closeMenu()
+
+    if (pathname === '/services') {
+      e.preventDefault()
+      if (window.location.hash !== `#${hash}`) {
+        window.location.hash = hash
+      }
+      window.dispatchEvent(new CustomEvent('service-select', { detail: hash }))
+    }
+  }
+
   return (
     <>
       <motion.header
@@ -171,7 +191,13 @@ export default function Navbar() {
                       exit="exit"
                     >
                       {services.map((s, i) => (
-                        <a key={i} href={s.href} className="dropdown-item" role="menuitem" onClick={() => setServicesDropdownOpen(false)}>
+                        <Link
+                          key={i}
+                          href={s.href}
+                          className="dropdown-item"
+                          role="menuitem"
+                          onClick={(e) => handleServiceClick(e, s.href)}
+                        >
                           <span className="dropdown-item__icon" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                               <path d="M11 2L3 11h6v7l8-9h-6V2z" stroke="#F5A623" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -180,7 +206,7 @@ export default function Navbar() {
                           <div>
                             <strong>{s.label}</strong>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -374,10 +400,10 @@ export default function Navbar() {
                     >
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 4 }}>
                         {services.map((s) => (
-                          <a
+                          <Link
                             key={s.label}
                             href={s.href}
-                            onClick={closeMenu}
+                            onClick={(e) => handleServiceClick(e, s.href)}
                             style={{
                               fontSize: 18,
                               color: 'rgba(255,255,255,0.70)',
@@ -386,7 +412,7 @@ export default function Navbar() {
                             }}
                           >
                             {s.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </motion.div>
