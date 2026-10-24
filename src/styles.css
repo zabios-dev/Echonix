@@ -5741,19 +5741,18 @@
 /* ── Blog Detail Page ── */
 .blog-detail-page {
   padding-top: var(--nav-h);
-  background: var(--clr-bg);
+  background: #ffffff;
+  min-height: 100vh;
 }
 
 .blog-article {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 64px 32px;
-  background: var(--clr-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid var(--clr-grey);
-  margin-top: 48px;
-  margin-bottom: 64px;
+  padding: 48px 24px 72px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
 }
 
 .blog-article__header {
@@ -5877,6 +5876,8 @@
 
 .blog-article__cta-btns {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -7483,18 +7484,18 @@
 /* Blog Detail Page */
 .blog-detail-page {
   padding-top: var(--nav-h);
-  background: var(--clr-bg);
+  background: #ffffff;
+  min-height: 100vh;
 }
 
 .blog-article {
-  max-width: 780px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 60px 32px;
-  background: var(--clr-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  margin-top: 40px;
-  margin-bottom: 60px;
+  padding: 48px 24px 72px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
 }
 
 .blog-article__header {
@@ -7632,14 +7633,16 @@
 
 .blog-article__cta-btns {
   display: flex;
-  gap: 12px;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
 }
 
-.blog-article__cta .btn--outline {
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.35);
+.blog-article__cta-btns .btn {
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blog-related {
@@ -7686,15 +7689,26 @@
   color: var(--clr-text-muted);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .blog-detail-page {
+    padding-top: 92px;
+  }
+
   .blog-article {
-    padding: 32px 20px;
-    margin: 20px 16px 40px;
-    border-radius: var(--radius-md);
+    padding: 24px 18px 48px;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .blog-article__featured-img-wrap {
+    border-radius: 14px;
+    margin-bottom: 24px;
   }
 
   .blog-related__inner {
-    padding: 0 20px;
+    padding: 0 18px;
   }
 
   .blog-related__grid {
@@ -7703,15 +7717,21 @@
   }
 
   .blog-article__cta {
-    padding: 24px 20px;
+    padding: 32px 20px;
+    border-radius: 18px;
   }
 
   .blog-article__cta-btns {
-    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .blog-article__cta-btns .btn {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
     justify-content: center;
   }
 }
@@ -10590,6 +10610,7 @@
   border-radius: 32px;
   background: #12382d;
   box-shadow: 0 24px 70px rgba(16, 39, 31, .13);
+  scroll-margin-top: 105px;
 }
 
 .services-selector__menu {
@@ -11052,6 +11073,323 @@
   .services-selector__trust {
     gap: 10px 18px;
     font-size: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   SERVICES PAGE — MOBILE TAB SWITCHER
+   Shown only below 768px. Desktop layout untouched.
+   ═══════════════════════════════════════════════════ */
+
+/* Hide desktop showcase panel on mobile — intro stays visible */
+@media (max-width: 767px) {
+  .services-selector__showcase {
+    display: none;
+  }
+}
+
+/* Trust strip wrapper — mirrors __inner max-width on desktop,
+   adds side padding on mobile to match ssp-mobile */
+.services-selector__trust-wrap {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .services-selector__trust-wrap {
+    padding: 0 4px;
+  }
+}
+
+/* The mobile block itself: hidden on desktop, visible on mobile */
+.ssp-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .ssp-mobile {
+    display: block;
+    padding: 0 4px;
+    scroll-margin-top: 85px;
+  }
+
+  /* Section heading */
+  .ssp-mobile__heading {
+    margin: 0 0 16px;
+    color: #1A3C2E;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Tab pill row */
+  .ssp-mobile__tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .ssp-mobile__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Individual tab pill */
+  .ssp-mobile__tab {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 8px 18px;
+    border: 1.5px solid #E8E6E1;
+    border-radius: 99px;
+    background: transparent;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+
+  .ssp-mobile__tab.is-active {
+    background: #1A3C2E;
+    border-color: #1A3C2E;
+    color: #fff;
+  }
+
+  /* Animated card */
+  .ssp-mobile__card {
+    margin-top: 12px;
+    padding: 0;               /* padding now on card-content */
+    border-radius: 16px;
+    background: #1A3C2E;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle grid texture — sits at z-index 1, above the image */
+  .ssp-mobile__card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.10;
+    background-image:
+      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+  }
+
+  /* Background image — top-right corner of card */
+  .ssp-mobile__card-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 52%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 0 16px 0 0;
+    z-index: 0;
+    display: block;
+    /* Slight dim so image doesn't overpower the dark card */
+    opacity: 0.85;
+  }
+
+  /* Shared overlay base */
+  .ssp-mobile__card-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /*
+   * LEFT FADE — covers only the left portion of the card.
+   * Solid #1A3C2E for 42% of card width (the left side where
+   * there is NO image), then feathers into transparent by 75%.
+   * This kills the hard left edge of the image completely.
+   */
+  .ssp-mobile__card-overlay--left {
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      #1A3C2E 0%,
+      #1A3C2E 38%,
+      rgba(26,60,46,0.98) 46%,
+      rgba(26,60,46,0.80) 58%,
+      rgba(26,60,46,0.30) 74%,
+      rgba(26,60,46,0.00) 100%
+    );
+  }
+
+  /*
+   * TOP FADE — covers only the top edge of the card.
+   * Solid at very top then fades out by 35% card height.
+   * Only the right side needs this (left is already solid),
+   * but covering full width is harmless and simpler.
+   */
+  .ssp-mobile__card-overlay--top {
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(26,60,46,1.00) 0%,
+      rgba(26,60,46,0.90) 8%,
+      rgba(26,60,46,0.50) 20%,
+      rgba(26,60,46,0.00) 42%
+    );
+  }
+
+  /*
+   * BOTTOM FADE — seals the image bottom into the card solid bg.
+   * Starts fading at 20% card height and is fully opaque by 58%.
+   */
+  .ssp-mobile__card-overlay--bottom {
+    z-index: 2;
+    background: linear-gradient(
+      to bottom,
+      rgba(26,60,46,0.00) 0%,
+      rgba(26,60,46,0.00) 22%,
+      rgba(26,60,46,0.60) 42%,
+      #1A3C2E 62%
+    );
+  }
+
+  /* Content wrapper — floats above all background layers */
+  .ssp-mobile__card-content {
+    position: relative;
+    z-index: 3;
+    padding: 24px;
+  }
+
+  /* Number + badge row */
+  .ssp-mobile__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .ssp-mobile__number {
+    font-size: 11px;
+    font-weight: 800;
+    color: #F5A623;
+    letter-spacing: 0.1em;
+  }
+
+  .ssp-mobile__badge {
+    padding: 4px 9px;
+    border-radius: 99px;
+    background: #F5A623;
+    color: #1A3C2E;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+
+  /* Solution title */
+  .ssp-mobile__title {
+    margin: 4px 0 0;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  /* Amber tagline */
+  .ssp-mobile__tagline {
+    margin: 6px 0 0;
+    color: #F5A623;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Subtle divider */
+  .ssp-mobile__divider {
+    margin: 14px 0;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 1px;
+  }
+
+  /* Description */
+  .ssp-mobile__desc {
+    margin: 0;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* Feature 2-column grid */
+  .ssp-mobile__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .ssp-mobile__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    color: rgba(255,255,255,0.82);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .ssp-mobile__feature b {
+    flex-shrink: 0;
+    color: #F5A623;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* CTA button */
+  .ssp-mobile__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    margin-top: 20px;
+    border-radius: 99px;
+    background: #F5A623;
+    color: #1A3C2E;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    box-sizing: border-box;
+  }
+
+  .ssp-mobile__cta:active {
+    opacity: 0.88;
+    transform: scale(0.985);
+  }
+
+  /* Expert link below card */
+  .ssp-mobile__expert-link {
+    display: block;
+    margin-top: 16px;
+    color: #F5A623;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .ssp-mobile__expert-link:hover {
+    text-decoration: underline;
   }
 }
 

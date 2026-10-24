@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -52,7 +52,7 @@ const products = [
     desc: 'Stay connected to the KSEB grid while storing solar energy in batteries. Hybrid systems provide backup during outages while allowing you to use or export solar power during normal grid hours.',
     tag: 'Best of Both',
     icon: 'hybrid',
-    image: '/images/services/hybrid.jpg',
+    image: '/images/services/hybrid.png',
     benefits: [
       'Grid + battery backup',
       'Reliable during outages',
@@ -70,7 +70,7 @@ const products = [
     desc: 'High-efficiency inverters compatible with major solar panel brands and battery systems. We supply, install and commission reliable inverter solutions for on-grid, off-grid and hybrid systems.',
     tag: 'High Efficiency',
     icon: 'inverter',
-    image: '/images/services/inverter.jpg',
+    image: '/images/services/inverter.png',
     benefits: [
       'High conversion efficiency',
       'On-grid, off-grid & hybrid',
@@ -129,8 +129,161 @@ const Icon = ({ type, size = 22 }) => {
   )
 }
 
+const mobileData = [
+  {
+    id: 'on-grid',
+    number: '01',
+    tabLabel: 'On-Grid',
+    title: 'On-Grid Solar',
+    tagline: 'Save more with KSEB net metering.',
+    description: 'Connect your solar system directly to the KSEB grid and use the power you generate. Excess electricity can be exported to the grid through net metering, helping bring your electricity bills close to zero.',
+    features: [
+      'KSEB net-metering connection',
+      'Government subsidy eligible',
+      'No battery replacement costs',
+      'Ideal for homes & businesses',
+    ],
+    mostPopular: true,
+    image: '/images/services/on-grid.jpg',
+    whatsapp: 'Hi Echonix, I would like to enquire about On-Grid Solar for my site.',
+  },
+  {
+    id: 'off-grid',
+    number: '02',
+    tabLabel: 'Off-Grid',
+    title: 'Off-Grid Solar',
+    tagline: 'Complete energy independence.',
+    description: 'Generate and store your own power with no dependency on the KSEB grid. Perfect for locations with frequent power cuts or areas where grid connection is unavailable.',
+    features: [
+      'Full energy independence',
+      'Battery storage included',
+      'Works during grid outages',
+      'Ideal for remote locations',
+    ],
+    mostPopular: false,
+    image: '/images/services/off-grid.jpg',
+    whatsapp: 'Hi Echonix, I would like to enquire about Off-Grid Solar for my site.',
+  },
+  {
+    id: 'hybrid',
+    number: '03',
+    tabLabel: 'Hybrid',
+    title: 'Hybrid Solar',
+    tagline: 'Best of both worlds.',
+    description: 'Stay connected to the KSEB grid while having battery backup for uninterrupted power. The most flexible solar solution for Kerala homes and businesses.',
+    features: [
+      'Grid + battery backup',
+      'Uninterrupted power supply',
+      'Subsidy eligible',
+      'Smart energy management',
+    ],
+    mostPopular: false,
+    image: '/images/services/hybrid.png',
+    whatsapp: 'Hi Echonix, I would like to enquire about Hybrid Solar for my site.',
+  },
+  {
+    id: 'inverters',
+    number: '04',
+    tabLabel: 'Inverters',
+    title: 'Home Inverters & Batteries',
+    tagline: 'High efficiency power conversion.',
+    description: 'High-efficiency solar inverters and battery systems for reliable power. Compatible with all major solar panel brands for new and existing installations.',
+    features: [
+      'High efficiency rating',
+      'Compatible with all panels',
+      'Smart monitoring',
+      'After-sales support',
+    ],
+    mostPopular: false,
+    image: '/images/services/inverter.png',
+    whatsapp: 'Hi Echonix, I would like to enquire about Home Inverters & Batteries for my site.',
+  },
+]
+
 export default function ServicesPage() {
   const [activeService, setActiveService] = useState('on-grid')
+  const [mobileTab, setMobileTab] = useState('on-grid')
+
+  // Deep-link selection and smooth scroll to Explore Solutions section
+  useEffect(() => {
+    const validIds = ['on-grid', 'off-grid', 'hybrid', 'inverters']
+
+    const scrollToSection = () => {
+      const isMobile = window.innerWidth < 768
+      const target = isMobile
+        ? document.querySelector('.ssp-mobile') || document.querySelector('.services-selector')
+        : document.querySelector('.services-selector__showcase') || document.querySelector('.services-selector')
+
+      if (target) {
+        const navOffset = isMobile ? 85 : 110
+        const rect = target.getBoundingClientRect()
+        const targetTop = rect.top + window.pageYOffset - navOffset
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth',
+        })
+      }
+    }
+
+    const selectService = (serviceId, shouldScroll = true) => {
+      if (!serviceId || !validIds.includes(serviceId)) return
+      setActiveService(serviceId)
+      setMobileTab(serviceId)
+
+      if (shouldScroll) {
+        setTimeout(() => {
+          scrollToSection()
+        }, 100)
+      }
+    }
+
+    // 1. Initial check on mount from hash or sessionStorage
+    let initialService = ''
+    const hash = window.location.hash.replace('#', '').trim()
+    if (validIds.includes(hash)) {
+      initialService = hash
+    } else {
+      try {
+        const stored = sessionStorage.getItem('echonix_selected_service')
+        if (stored && validIds.includes(stored)) {
+          initialService = stored
+          sessionStorage.removeItem('echonix_selected_service')
+        }
+      } catch (_) {}
+    }
+
+    let t1, t2
+    if (initialService) {
+      selectService(initialService, true)
+      t1 = setTimeout(() => scrollToSection(), 400)
+      t2 = setTimeout(() => scrollToSection(), 800)
+    }
+
+    // 2. Listen to browser hashchange (back/forward button or hash modification)
+    const handleHashChange = () => {
+      const currentHash = window.location.hash.replace('#', '').trim()
+      if (validIds.includes(currentHash)) {
+        selectService(currentHash, true)
+      }
+    }
+
+    // 3. Listen to custom service-select event (fired by Navbar)
+    const handleCustomSelect = (e) => {
+      if (e?.detail && validIds.includes(e.detail)) {
+        selectService(e.detail, true)
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    window.addEventListener('service-select', handleCustomSelect)
+
+    return () => {
+      if (t1) clearTimeout(t1)
+      if (t2) clearTimeout(t2)
+      window.removeEventListener('hashchange', handleHashChange)
+      window.removeEventListener('service-select', handleCustomSelect)
+    }
+  }, [])
 
   return (
     <>
@@ -191,7 +344,13 @@ export default function ServicesPage() {
                         className={`services-selector__item ${
                           isActive ? 'is-active' : ''
                         }`}
-                        onClick={() => setActiveService(service.id)}
+                        onClick={() => {
+                          setActiveService(service.id)
+                          setMobileTab(service.id)
+                          if (typeof window !== 'undefined' && window.history.replaceState) {
+                            window.history.replaceState(null, '', `#${service.id}`)
+                          }
+                        }}
                         aria-pressed={isActive}
                       >
                         <span className="services-selector__number">
@@ -299,15 +458,129 @@ export default function ServicesPage() {
 
             </div>
 
-            {/* Trust strip */}
+          </div>
+
+          {/* ─── MOBILE-ONLY TAB SWITCHER (hidden ≥768px) ─── */}
+          <div className="ssp-mobile">
+
+            {/* Section heading */}
+            <p className="ssp-mobile__heading">Explore Solutions</p>
+
+            {/* Horizontal tab pills */}
+            <div className="ssp-mobile__tabs" role="tablist" aria-label="Solar solutions">
+              {mobileData.map((item) => (
+                <button
+                  key={item.id}
+                  role="tab"
+                  aria-selected={mobileTab === item.id}
+                  aria-controls={`ssp-panel-${item.id}`}
+                  id={`ssp-tab-${item.id}`}
+                  className={`ssp-mobile__tab${mobileTab === item.id ? ' is-active' : ''}`}
+                  onClick={() => {
+                    setMobileTab(item.id)
+                    setActiveService(item.id)
+                    if (typeof window !== 'undefined' && window.history.replaceState) {
+                      window.history.replaceState(null, '', `#${item.id}`)
+                    }
+                  }}
+                >
+                  {item.tabLabel}
+                </button>
+              ))}
+            </div>
+
+            {/* Animated card */}
+            <AnimatePresence mode="wait">
+              {mobileData.map((item) =>
+                item.id === mobileTab ? (
+                  <motion.div
+                    key={item.id}
+                    role="tabpanel"
+                    id={`ssp-panel-${item.id}`}
+                    aria-labelledby={`ssp-tab-${item.id}`}
+                    className="ssp-mobile__card"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    {/* Background image — top-right of card */}
+                    <img
+                      src={item.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="ssp-mobile__card-img"
+                    />
+                    {/* Left-fade overlay */}
+                    <div className="ssp-mobile__card-overlay ssp-mobile__card-overlay--left" />
+                    {/* Top-fade overlay */}
+                    <div className="ssp-mobile__card-overlay ssp-mobile__card-overlay--top" />
+                    {/* Bottom-fade overlay */}
+                    <div className="ssp-mobile__card-overlay ssp-mobile__card-overlay--bottom" />
+
+                    {/* Card content — sits above image layers */}
+                    <div className="ssp-mobile__card-content">
+
+                    {/* Number + badge row */}
+                    <div className="ssp-mobile__card-top">
+                      <span className="ssp-mobile__number">{item.number}</span>
+                      {item.mostPopular && (
+                        <span className="ssp-mobile__badge">MOST POPULAR</span>
+                      )}
+                    </div>
+
+                    {/* Title */}
+                    <h2 className="ssp-mobile__title">{item.title}</h2>
+
+                    {/* Tagline */}
+                    <p className="ssp-mobile__tagline">{item.tagline}</p>
+
+                    {/* Divider */}
+                    <div className="ssp-mobile__divider" />
+
+                    {/* Description */}
+                    <p className="ssp-mobile__desc">{item.description}</p>
+
+                    {/* Feature grid */}
+                    <div className="ssp-mobile__features">
+                      {item.features.map((f) => (
+                        <span key={f} className="ssp-mobile__feature">
+                          <b>✓</b>
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* CTA */}
+                    <a
+                      href="https://wa.me/919539220888"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ssp-mobile__cta"
+                    >
+                      Talk to a solar expert →
+                    </a>
+
+                    </div>{/* end card-content */}
+                  </motion.div>
+                ) : null
+              )}
+            </AnimatePresence>
+
+
+          </div>
+          {/* ─── END MOBILE-ONLY ─── */}
+
+          {/* Trust strip — shown on desktop below showcase, on mobile below ssp-mobile */}
+          <div className="services-selector__trust-wrap">
             <div className="services-selector__trust">
               <span>✓ KSEB compliant installations</span>
               <span>✓ Quality components</span>
               <span>✓ Professional installation</span>
               <span>✓ After-sales support</span>
             </div>
-
           </div>
+
         </section>
 
         {/* The retired Smart Calculator is intentionally excluded from this page.
