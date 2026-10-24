@@ -52,7 +52,7 @@ const products = [
     desc: 'Stay connected to the KSEB grid while storing solar energy in batteries. Hybrid systems provide backup during outages while allowing you to use or export solar power during normal grid hours.',
     tag: 'Best of Both',
     icon: 'hybrid',
-    image: '/images/services/hybrid.jpg',
+    image: '/images/services/hybrid.png',
     benefits: [
       'Grid + battery backup',
       'Reliable during outages',
@@ -70,7 +70,7 @@ const products = [
     desc: 'High-efficiency inverters compatible with major solar panel brands and battery systems. We supply, install and commission reliable inverter solutions for on-grid, off-grid and hybrid systems.',
     tag: 'High Efficiency',
     icon: 'inverter',
-    image: '/images/services/inverter.jpg',
+    image: '/images/services/inverter.png',
     benefits: [
       'High conversion efficiency',
       'On-grid, off-grid & hybrid',
@@ -178,7 +178,7 @@ const mobileData = [
       'Smart energy management',
     ],
     mostPopular: false,
-    image: '/images/services/hybrid.jpg',
+    image: '/images/services/hybrid.png',
     whatsapp: 'Hi Echonix, I would like to enquire about Hybrid Solar for my site.',
   },
   {
@@ -195,7 +195,7 @@ const mobileData = [
       'After-sales support',
     ],
     mostPopular: false,
-    image: '/images/services/inverter.jpg',
+    image: '/images/services/inverter.png',
     whatsapp: 'Hi Echonix, I would like to enquire about Home Inverters & Batteries for my site.',
   },
 ]

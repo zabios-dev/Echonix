@@ -40,7 +40,7 @@ const services = [
       "Stay connected to the KSEB grid while storing solar energy in batteries. Hybrid systems provide backup during outages while allowing you to use or export solar power during normal grid hours.",
     tags: ["Grid + Battery Backup", "Outage Protection", "Smart Energy Management"],
     icon: Zap,
-    image: "/images/services/hybrid.jpg",
+    image: "/images/services/hybrid.png",
   },
   {
   id: "inverters",
@@ -54,7 +54,7 @@ const services = [
     "Professional Installation",
   ],
   icon: Cpu,
-  image: "/images/services/inverter.jpg",
+  image: "/images/services/inverter.png",
 },
 ];
 
