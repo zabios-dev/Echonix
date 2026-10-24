@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .agent/
+.agents/
 .next/
+
 
 report.md

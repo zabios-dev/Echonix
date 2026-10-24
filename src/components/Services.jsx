@@ -168,7 +168,7 @@ export default function Services() {
           </div>
 
           {/* RIGHT — sticky image panel */}
-          <div className="lg:col-span-7 lg:sticky lg:top-28">
+          <div className="hidden md:block lg:col-span-7 lg:sticky lg:top-28">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] shadow-[0_20px_60px_rgba(16,39,31,0.15)] sm:aspect-[16/10]">
               <AnimatePresence mode="wait">
                 <motion.img
