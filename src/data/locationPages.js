@@ -1,7 +1,7 @@
 const sharedStats = [
-  { value: '₹78K', label: 'Max Government Subsidy' },
   { value: '25yr', label: 'Panel Warranty' },
   { value: '100%', label: 'KSEB Compliant' },
+  { value: '5★', label: 'Customer Rating' },
 ]
 
 const sharedServices = [
