@@ -4,6 +4,11 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import FloatingWhatsApp from './FloatingWhatsApp'
 
+const nearbyLocations = [
+  { name: 'Malappuram', href: '/solar-malappuram', anchor: 'solar panel installation in Malappuram' },
+  { name: 'Kozhikode', href: '/solar-kozhikode', anchor: 'solar installation in Kozhikode' },
+]
+
 export default function LocationPage({ location }) {
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -235,6 +240,30 @@ export default function LocationPage({ location }) {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f7f7f3] py-16 md:py-20" aria-labelledby="nearby-heading">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <h2 id="nearby-heading" className="mb-8 text-2xl font-extrabold text-[#17382e] sm:text-3xl">
+              We Also Serve Nearby
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {nearbyLocations.filter((nearby) => nearby.name !== location.name).map((nearby) => (
+                <Link
+                  key={nearby.href}
+                  href={nearby.href}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#e99b1b]/30 bg-white px-4 py-3 text-sm font-bold text-[#17382e] shadow-sm transition-shadow hover:shadow-md"
+                >
+                  {nearby.anchor}
+                  <ArrowUpRight size={16} className="text-[#e99b1b]" />
+                </Link>
+              ))}
+            </div>
+            <Link href="/#areas-serve" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#e99b1b] hover:underline">
+              Explore all service areas
+              <ArrowUpRight size={16} />
+            </Link>
           </div>
         </section>
 

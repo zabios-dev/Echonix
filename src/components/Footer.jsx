@@ -37,6 +37,8 @@ export default function Footer() {
         'North BP Angadi, Tirur, Kerala - 676102',
       ],
       mapUrl: 'https://maps.app.goo.gl/UGgr2VUAZdg4TGLMA',
+      locationHref: '/solar-malappuram',
+      locationLabel: 'Solar in Malappuram',
     },
     {
       city: 'Kozhikode',
@@ -45,6 +47,8 @@ export default function Footer() {
         'Mankave, Kozhikode, Kerala - 673007',
       ],
       mapUrl: 'https://maps.app.goo.gl/uXpnNkPsss4np3gV7',
+      locationHref: '/solar-kozhikode',
+      locationLabel: 'Solar in Kozhikode',
     },
   ]
 
@@ -141,16 +145,22 @@ export default function Footer() {
                       ))}
                     </address>
 
-                    <a
-                      href={branch.mapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="footer__branch-map-link"
-                      aria-label={`Get directions to ${branch.city} branch on Google Maps`}
-                    >
-                      <span>Get Directions</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
+                    <div className="footer__branch-links">
+                      <a
+                        href={branch.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer__branch-map-link"
+                        aria-label={`Get directions to ${branch.city} branch on Google Maps`}
+                      >
+                        <span>Get Directions</span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                      <Link href={branch.locationHref} className="footer__branch-map-link">
+                        <span>{branch.locationLabel}</span>
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -221,7 +231,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="footer__bottom">
-          <p className="copyright">© 2025 Echonix Technology Pvt. Ltd.</p>
+          <p className="copyright">©{new Date().getFullYear()} Echonix Technology Pvt. Ltd.</p>
           <p className="attribution">Powered by <a href="https://zabios.in" className="bottom-link" target="_blank" rel="noopener">Zabios</a></p>
         </div>
       </div>

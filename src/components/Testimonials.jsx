@@ -41,7 +41,7 @@ const testimonials = [
 
 function StarRow({ count }) {
   return (
-    <div className="tr__stars" aria-label={`${count} out of 5 stars`}>
+    <div className="tr__stars" role="img" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: count }).map((_, i) => (
         <svg key={i} width="14" height="14" viewBox="0 0 14 14" fill="#F5A623" aria-hidden="true">
           <path d="M7 1l1.55 3.14L12 4.63l-2.5 2.44.59 3.43L7 8.77l-3.09 1.73.59-3.43L2 4.63l3.45-.49L7 1z"/>

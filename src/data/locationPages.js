@@ -66,31 +66,4 @@ export const locationPages = {
     ],
     cta: 'Get a free site survey and custom quote. Our Malappuram team responds within 2 hours.',
   },
-  palakkad: {
-    name: 'Palakkad',
-    stats: [{ value: '200+', label: 'Installations in Palakkad' }, ...sharedStats],
-    intro: "Palakkad's high solar irradiance means faster payback and higher yields than most of Kerala. Government subsidy up to ₹78,000.",
-    overview: "Palakkad's unique geography — the Palakkad Gap — gives the district some of Kerala's highest solar radiation levels. We design systems with optimal tilt and orientation for maximum annual yield.",
-    features: [
-      ['High-Yield System Design', "We account for Palakkad's sun angle, Gap wind and seasonal variation to maximise annual output."],
-      ['KSEB Net Metering', 'We manage application, inspection and grid connection across Palakkad KSEB sections.'],
-      ['Maximum Subsidy', 'We prepare documentation and track eligible residential subsidy disbursement.'],
-      ['Agricultural Solar', 'Custom pump-integrated, off-grid and grid-tied systems for farms and plantations.'],
-      ['Proven Quality', 'Tier-1 panels with long performance warranties and Indian grid-standard certification.'],
-      ['End-to-End Support', 'One point of contact from site survey through commissioning and maintenance.'],
-    ],
-    services: [
-      { ...sharedServices[0], tag: 'High ROI in Kerala', description: "Palakkad's high solar irradiance helps maximise net-metering returns and export value." },
-      { ...sharedServices[1], description: 'Battery-backed energy independence for rural and remote properties.' },
-      { ...sharedServices[2], description: 'Grid benefits with battery backup for mixed urban-rural power needs.' },
-    ],
-    areas: ['Palakkad Town', 'Chittur', 'Ottapalam', 'Shoranur', 'Mannarkkad', 'Alathur', 'Malampuzha', 'Nemmara', 'Pattambi', 'Thrithala', 'Kongad'],
-    faqs: [
-      ['Is Palakkad a good district for solar energy?', 'Yes. The Palakkad Gap contributes to high solar irradiance, which can improve energy yield and payback compared with much of Kerala.'],
-      ['Do you serve Chittur, Mannarkkad and the eastern taluks?', 'Yes. Echonix covers Palakkad town, Chittur, Mannarkkad, Ottapalam, Shoranur, Alathur, Malampuzha and surrounding taluks.'],
-      ['What subsidy is available for Palakkad solar installations?', 'Eligible residential grid-tied systems can receive up to ₹78,000 under the MNRE central subsidy scheme.'],
-      ['Can you handle agricultural and commercial solar in Palakkad?', 'Yes. We design systems for homes, farms, commercial establishments and industrial units across the district.'],
-    ],
-    cta: "Palakkad's sun gives you Kerala's best solar returns. Get a free site survey and quote today.",
-  },
 }
