@@ -10,6 +10,7 @@ import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 import FloatingWhatsApp from '../components/FloatingWhatsApp'
 import SectionReveal from '../components/SectionReveal'
+import AreasWeServe from '../components/AreasWeServe'
 
 
 export const metadata: Metadata = {
@@ -53,6 +54,8 @@ export default function HomePage() {
         <SectionReveal delay={0}>
           <FAQ />
         </SectionReveal>
+
+        <AreasWeServe />
       </main>
       <Footer />
       <FloatingWhatsApp />

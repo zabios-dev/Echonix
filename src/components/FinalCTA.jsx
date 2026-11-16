@@ -12,6 +12,8 @@ export default function FinalCTA() {
     e.preventDefault()
     if (formData.name && formData.phone) {
       setSubmitted(true)
+      // Fire GA4 quote_form_submit (picked up by ConversionTracker)
+      document.dispatchEvent(new CustomEvent('echonix:quote_submitted'))
       const msg = `Hi Echonix, I would like to get a free quote. Name: ${formData.name}, Phone: ${formData.phone}`
       window.open(`https://wa.me/919539220888?text=${encodeURIComponent(msg)}`, '_blank')
     }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
 import LenisProvider from '../components/LenisProvider'
+import ConversionTracker from '../components/ConversionTracker'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
@@ -122,6 +123,7 @@ export default function RootLayout({
       </head>
       <body>
         <LenisProvider>{children}</LenisProvider>
+        <ConversionTracker />
         <SpeedInsights />
       </body>
     </html>

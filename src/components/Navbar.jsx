@@ -13,6 +13,11 @@ const services = [
   { label: 'Home Inverters & Batteries', href: '/services#inverters' },
 ]
 
+const locations = [
+  { label: 'Malappuram', href: '/solar-malappuram' },
+  { label: 'Kozhikode', href: '/solar-kozhikode' },
+]
+
 // Desktop dropdown variants
 const dropdownVariants = {
   hidden: { opacity: 0, x: '-50%', y: -8 },
@@ -53,6 +58,8 @@ export default function Navbar() {
   
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [locationsDropdownOpen, setLocationsDropdownOpen] = useState(false)
+  const [mobileLocationsOpen, setMobileLocationsOpen] = useState(false)
 
   const pathname = usePathname()
   const isHomePage = pathname === '/'
@@ -65,6 +72,7 @@ export default function Navbar() {
   const hamburgerColor = isMobile ? 'var(--clr-dark)' : (isSolid ? 'var(--clr-dark)' : '#ffffff')
 
   const servicesDropdownRef = useRef(null)
+  const locationsDropdownRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -77,6 +85,9 @@ export default function Navbar() {
     const handleClickOutside = (e) => {
       if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(e.target)) {
         setServicesDropdownOpen(false)
+      }
+      if (locationsDropdownRef.current && !locationsDropdownRef.current.contains(e.target)) {
+        setLocationsDropdownOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -92,6 +103,7 @@ export default function Navbar() {
   const closeMenu = () => {
     setMobileOpen(false)
     setMobileServicesOpen(false)
+    setMobileLocationsOpen(false)
   }
 
   const handleServiceClick = (e, href) => {
@@ -214,6 +226,31 @@ export default function Navbar() {
               </li>
 
               <li className="nav__item"><Link href="/projects" className="nav__link">Projects</Link></li>
+              <li className="nav__item nav__item--dropdown" ref={locationsDropdownRef}>
+                <button
+                  className="nav__link nav__link--dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded={locationsDropdownOpen}
+                  aria-controls="locations-dropdown-menu"
+                  onClick={() => setLocationsDropdownOpen((v) => !v)}
+                >
+                  Locations
+                  <svg className={`dropdown-chevron${locationsDropdownOpen ? ' dropdown-chevron--open' : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {locationsDropdownOpen && (
+                    <motion.div className="dropdown-menu" id="locations-dropdown-menu" role="menu" aria-label="Service locations" variants={dropdownVariants} initial="hidden" animate="visible" exit="exit">
+                      {locations.map((location) => (
+                        <Link key={location.href} href={location.href} className="dropdown-item" role="menuitem" onClick={() => setLocationsDropdownOpen(false)}>
+                          <div><strong>{location.label}</strong></div>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
               <li className="nav__item"><Link href="/blog" className="nav__link">News</Link></li>
             </ul>
           </nav>
@@ -318,6 +355,44 @@ export default function Navbar() {
               animate="visible"
             >
               {/* Home */}
+              <motion.div variants={navItemVariants}>
+                <button
+                  onClick={() => setMobileLocationsOpen((v) => !v)}
+                  aria-expanded={mobileLocationsOpen}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    fontSize: 32,
+                    fontWeight: 600,
+                    color: '#fff',
+                    marginBottom: mobileLocationsOpen ? 16 : 28,
+                  }}
+                >
+                  Locations
+                  <svg width="20" height="20" viewBox="0 0 12 12" fill="none" aria-hidden="true" style={{ transform: mobileLocationsOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {mobileLocationsOpen && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: 'hidden', paddingLeft: 16, marginBottom: 28 }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 4 }}>
+                        {locations.map((location) => (
+                          <Link key={location.href} href={location.href} onClick={closeMenu} style={{ fontSize: 18, color: 'rgba(255,255,255,0.70)', textDecoration: 'none', fontWeight: 400 }}>
+                            {location.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+
               <motion.div variants={navItemVariants}>
                 <Link
                   href="/"
