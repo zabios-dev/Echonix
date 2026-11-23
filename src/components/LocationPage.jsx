@@ -25,6 +25,7 @@ const FloatingWhatsApp = dynamic(() => import('./FloatingWhatsApp'))
 const nearbyLocations = [
   { name: 'Malappuram', href: '/solar-malappuram', anchor: 'Solar installation in Malappuram' },
   { name: 'Kozhikode', href: '/solar-kozhikode', anchor: 'Solar installation in Kozhikode' },
+  { name: 'Palakkad', href: '/solar-palakkad', anchor: 'Solar installation in Palakkad' },
 ]
 
 const serviceIconMap = {

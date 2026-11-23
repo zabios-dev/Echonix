@@ -66,4 +66,32 @@ export const locationPages = {
     ],
     cta: 'Get a free site survey and custom quote. Our Malappuram team responds within 2 hours.',
   },
+  palakkad: {
+    name: 'Palakkad',
+    alternateName: 'Palghat',
+    stats: [{ value: '200+', label: 'Installations in Palakkad' }, ...sharedStats],
+    intro: 'High-efficiency on-grid, off-grid and hybrid solar installations across Palakkad district. Government subsidy up to ₹78,000.',
+    overview: "From Palakkad town to Ottapalam, Chittur, and Mannarkkad, Echonix delivers dependable solar systems across Palakkad district. With exceptional solar irradiance throughout the year, Palakkad is Kerala's prime location for solar power. Our end-to-end service — site survey, engineering, KSEB approvals, and long-term support — guarantees maximum generation.",
+    features: [
+      ['Free Site Survey', 'Our engineers assess your Palakkad property, roof structure, and sun exposure to design an optimal high-yield solar system.'],
+      ['KSEB Net Metering', 'We handle the complete KSEB application, inspection, and bi-directional meter installation without office visits from you.'],
+      ['Subsidy Processing', 'We prepare, submit, and track your eligible MNRE PM Surya Ghar subsidy claim of up to ₹78,000.'],
+      ['High-Heat Engineered', 'Panels and mounting systems are specially selected to withstand Palakkad’s intense summer heat and strong winds.'],
+      ['Fast Turnaround', 'Experienced local technical crews complete residential installations within 1 to 2 days after approvals.'],
+      ['Dedicated Branch Support', 'Our Parakkunnam, Palakkad branch provides dedicated customer care, scheduled maintenance, and 24/7 technical assistance.'],
+    ],
+    services: [
+      { ...sharedServices[0], description: 'Connect directly to the KSEB grid and reduce your electricity bills to zero through net metering. Perfect for Palakkad homes and businesses.' },
+      { ...sharedServices[1], description: 'High-capacity battery storage systems for agricultural estates, farms, and rural properties requiring complete energy independence.' },
+      { ...sharedServices[2], description: 'Intelligent grid-tied power with seamless battery backup during grid outages and peak load hours across Palakkad.' },
+    ],
+    areas: ['Palakkad Town', 'Ottapalam', 'Chittur', 'Mannarkkad', 'Alathur', 'Pattambi', 'Cherpulassery', 'Kanjikode', 'Kollengode', 'Nenmara', 'Shoranur', 'Parakkunnam'],
+    faqs: [
+      ['Do you provide solar installation across all parts of Palakkad?', 'Yes. Echonix covers Palakkad town, Ottapalam, Chittur, Mannarkkad, Alathur, Pattambi, Cherpulassery, Kanjikode, and surrounding regions with our dedicated local branch.'],
+      ['How soon can you survey my rooftop in Palakkad?', 'We schedule a free, no-obligation rooftop survey and generation estimate within 24–48 hours of your enquiry.'],
+      ['Is the ₹78,000 government subsidy applicable for Palakkad homes?', 'Yes. Eligible residential installations qualify for up to ₹78,000 under the central MNRE PM Surya Ghar Muft Bijli Yojana. We handle all documentation and portal filing.'],
+      ['How do solar panels perform in Palakkad’s hot summer climate?', 'Palakkad receives some of the highest solar irradiance in Kerala. We use premium monocrystalline tier-1 panels with low temperature coefficients to ensure maximum power generation even during peak heat.'],
+    ],
+    cta: 'Get a free site survey and custom solar quote in Palakkad. Our local team responds within 2 hours.',
+  },
 }

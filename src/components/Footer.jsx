@@ -60,7 +60,7 @@ export default function Footer() {
         'Palakkad, Kerala - 678001',
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Chunnambuthara+Rd,+Parakkunnam,+Palakkad,+Kerala+678001',
-      locationHref: '/services',
+      locationHref: '/solar-palakkad',
       locationLabel: 'Solar in Palakkad',
     },
   ]
