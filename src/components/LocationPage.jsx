@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import {
   ArrowUpRight,
   MapPin,
@@ -15,14 +16,16 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import Navbar from './Navbar'
-import Footer from './Footer'
-import FloatingWhatsApp from './FloatingWhatsApp'
+
+const Footer = dynamic(() => import('./Footer'))
+const FloatingWhatsApp = dynamic(() => import('./FloatingWhatsApp'))
 
 /* ── Static data ─────────────────────────────────── */
 
 const nearbyLocations = [
   { name: 'Malappuram', href: '/solar-malappuram', anchor: 'Solar installation in Malappuram' },
   { name: 'Kozhikode', href: '/solar-kozhikode', anchor: 'Solar installation in Kozhikode' },
+  { name: 'Palakkad', href: '/solar-palakkad', anchor: 'Solar installation in Palakkad' },
 ]
 
 const serviceIconMap = {
@@ -32,9 +35,9 @@ const serviceIconMap = {
 }
 
 const serviceImageMap = {
-  'On-Grid Solar': '/images/services/on-grid.jpg',
-  'Off-Grid Solar': '/images/services/off-grid.jpg',
-  'Hybrid Solar': '/images/services/hybrid.png',
+  'On-Grid Solar': '/images/services/on-grid.webp',
+  'Off-Grid Solar': '/images/services/off-grid.webp',
+  'Hybrid Solar': '/images/services/hybrid.webp',
 }
 
 /** Rotate through meaningful feature icons */
@@ -83,10 +86,11 @@ export default function LocationPage({ location }) {
           {/* Background photo */}
           <div className="pointer-events-none absolute inset-0" aria-hidden="true">
             <Image
-              src="/heroes/hero-solar.png"
-              alt=""
+              src="/heroes/hero-solar.webp"
+              alt="Solar Panel Installation"
               fill
               priority
+              fetchPriority="high"
               className="object-cover object-center"
               sizes="100vw"
             />

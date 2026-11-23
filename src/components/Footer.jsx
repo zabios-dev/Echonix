@@ -27,11 +27,11 @@ export default function Footer() {
     { href: 'tel:+919539220888', label: '+91 9539220888' },
   ]
 
-  const workingAreas = ['Tirur', 'Kozhikode', 'Cherpulassery', 'Malappuram', 'Wandoor']
-
+  // Centralized, data-driven branch list
   const branches = [
     {
-      city: 'Tirur',
+      id: 'tirur',
+      name: 'Tirur – Malappuram',
       addressLines: [
         'Tirur Rd, near OLD VISWAS THEATER,',
         'North BP Angadi, Tirur, Kerala - 676102',
@@ -41,7 +41,8 @@ export default function Footer() {
       locationLabel: 'Solar in Malappuram',
     },
     {
-      city: 'Kozhikode',
+      id: 'kozhikode',
+      name: 'Kozhikode',
       addressLines: [
         'Palace Rd, opp. KSEB SUB STATION,',
         'Mankave, Kozhikode, Kerala - 673007',
@@ -49,6 +50,18 @@ export default function Footer() {
       mapUrl: 'https://maps.app.goo.gl/uXpnNkPsss4np3gV7',
       locationHref: '/solar-kozhikode',
       locationLabel: 'Solar in Kozhikode',
+    },
+    {
+      id: 'palakkad',
+      name: 'Palakkad',
+      badge: 'New Branch',
+      addressLines: [
+        'Chunnambuthara Rd, Parakkunnam,',
+        'Palakkad, Kerala - 678001',
+      ],
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Chunnambuthara+Rd,+Parakkunnam,+Palakkad,+Kerala+678001',
+      locationHref: '/solar-palakkad',
+      locationLabel: 'Solar in Palakkad',
     },
   ]
 
@@ -103,10 +116,10 @@ export default function Footer() {
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer__inner">
-        {/* Signature */}
-        <div className="footer__signature">
+        {/* Subtle Brand Watermark (Desktop) */}
+        <div className="footer__signature" aria-hidden="true">
           <span className="footer__signature-text">ECHONIX</span>
-          <div className="footer__signature-svg-wrap" aria-hidden="true">
+          <div className="footer__signature-svg-wrap">
             <svg viewBox="0 0 1200 160" className="footer__signature-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 20h1200M0 50h1200M0 80h1200M0 110h1200M0 140h1200" stroke="currentColor" strokeWidth="0.8" opacity="0.12" />
               <path d="M100 0v160M200 0v160M300 0v160M400 0v160M500 0v160M600 0v160M700 0v160M800 0v160M900 0v160M1000 0v160M1100 0v160" stroke="currentColor" strokeWidth="0.8" opacity="0.12" />
@@ -118,78 +131,20 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Main Grid */}
-        <div className="footer__grid">
-          {/* Brand */}
-          <div className="footer__col footer__col--brand">
+        {/* SECTION A — Brand and Social */}
+        <div className="footer__section-brand">
+          <div className="footer__brand-block">
             <div className="footer__logo-wrap">
               <span className="footer__logo-text">ECHONIX</span>
             </div>
-            <p className="footer__tagline">Delivering High Quality Solar Solutions Since 1985</p>
-            {/* Our Branches */}
-            <div className="footer__branches" aria-label="Our Branches">
-              <h4 className="footer__branches-title">Our Branches</h4>
-
-              <div className="footer__branches-grid">
-                {branches.map((branch) => (
-                  <div key={branch.city} className="footer__branch-item">
-                    <span className="footer__branch-city">
-                      {branch.city}
-                    </span>
-
-                    <address className="footer__branch-address">
-                      {branch.addressLines.map((line, idx) => (
-                        <span key={idx} className="address-line">
-                          {line}
-                        </span>
-                      ))}
-                    </address>
-
-                    <div className="footer__branch-links">
-                      <a
-                        href={branch.mapUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="footer__branch-map-link"
-                        aria-label={`Get directions to ${branch.city} branch on Google Maps`}
-                      >
-                        <span>Get Directions</span>
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                      <Link href={branch.locationHref} className="footer__branch-map-link">
-                        <span>{branch.locationLabel}</span>
-                        <span aria-hidden="true">→</span>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <p className="footer__tagline">
+              Delivering High Quality Solar Solutions Since 1985
+            </p>
           </div>
 
-          {/* Company */}
-          <div className="footer__col">
-            <h3 className="footer__col-title">Company</h3>
-            <ul className="footer__links-list">
-              {companyLinks.map((link) => (
-                <li key={link.label}>{renderFooterLink(link)}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className="footer__col">
-            <h3 className="footer__col-title">Services</h3>
-            <ul className="footer__links-list">
-              {serviceLinks.map((link) => (
-                <li key={link.label}>{renderFooterLink(link)}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Follow */}
-          <div className="footer__col">
-            <h3 className="footer__col-title">Follow</h3>
+          {/* Desktop Social Links */}
+          <div className="footer__social-block footer__social-block--desktop">
+            <span className="footer__social-label">Follow Us</span>
             <div className="footer__social-links" aria-label="Social media links">
               {socialLinks.map((link) => (
                 <a
@@ -205,10 +160,131 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <div className="footer__contact-info footer__social-contact" aria-label="Contact information">
-              <p className="contact-line contact-line--phone">
-                <span className="label">Phone:</span>
-                <span className="footer__contact-items" aria-label="Phone numbers">
+          </div>
+        </div>
+
+        {/* SECTION B — Dedicated Full-Width Branches Section */}
+        <section className="footer__branches-section" aria-label="Our Branches">
+          <div className="footer__branches-header">
+            <div className="footer__branches-title-wrap">
+              <span className="footer__branches-indicator" aria-hidden="true" />
+              <h3 className="footer__branches-title">Our Branches</h3>
+            </div>
+            <span className="footer__branches-count">3 Locations in Kerala</span>
+          </div>
+
+          <div className="footer__branches-grid">
+            {branches.map((branch) => (
+              <div
+                key={branch.id}
+                className="footer__branch-card"
+                data-branch={branch.id}
+              >
+                <div className="footer__branch-top">
+                  <div className="footer__branch-name-wrap">
+                    <span className="footer__branch-pin" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    </span>
+                    <h4 className="footer__branch-name">{branch.name}</h4>
+                  </div>
+                  {branch.badge && (
+                    <span className="footer__branch-badge">{branch.badge}</span>
+                  )}
+                </div>
+
+                <address className="footer__branch-address">
+                  {branch.addressLines.map((line, idx) => (
+                    <span key={idx} className="address-line">
+                      {line}
+                    </span>
+                  ))}
+                </address>
+
+                <div className="footer__branch-actions">
+                  <a
+                    href={branch.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer__branch-action footer__branch-action--directions"
+                    aria-label={`Get directions to ${branch.name} branch on Google Maps`}
+                  >
+                    <span>Get Directions</span>
+                    <span className="action-arrow" aria-hidden="true">↗</span>
+                  </a>
+
+                  {branch.locationHref && (
+                    <>
+                      <span className="footer__branch-action-sep" aria-hidden="true">•</span>
+                      <Link
+                        href={branch.locationHref}
+                        className="footer__branch-action footer__branch-action--seo"
+                      >
+                        <span>{branch.locationLabel}</span>
+                        <span className="action-arrow" aria-hidden="true">→</span>
+                      </Link>
+                    </>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION C — Navigation and Contact */}
+        <div className="footer__nav-section">
+          {/* Company & Services wrapper (side-by-side on mobile) */}
+          <div className="footer__nav-columns">
+            {/* 1. Company */}
+            <div className="footer__col footer__col--company">
+              <h4 className="footer__col-title">Company</h4>
+              <ul className="footer__links-list">
+                {companyLinks.map((link) => (
+                  <li key={link.label}>{renderFooterLink(link)}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 2. Services */}
+            <div className="footer__col footer__col--services">
+              <h4 className="footer__col-title">Services</h4>
+              <ul className="footer__links-list">
+                {serviceLinks.map((link) => (
+                  <li key={link.label}>{renderFooterLink(link)}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Mobile Social Links (Items 6 in mobile spec: right after Company/Services) */}
+          <div className="footer__social-block footer__social-block--mobile">
+            <span className="footer__social-label">Follow Us</span>
+            <div className="footer__social-links" aria-label="Social media links">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="footer__social-chip"
+                  aria-label={link.label}
+                  title={link.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. Contact (Item 7 in mobile spec) */}
+          <div className="footer__col footer__col--contact">
+            <h4 className="footer__col-title">Contact</h4>
+            <div className="footer__contact-info" aria-label="Contact information">
+              <div className="contact-line contact-line--phone">
+                <span className="contact-label">Phone:</span>
+                <div className="footer__contact-items">
                   {phoneLinks.map((phoneLink, index) => (
                     <span key={phoneLink.label} className="footer__contact-item">
                       <a href={phoneLink.href} className="footer__contact-link footer__contact-link--phone">
@@ -217,22 +293,33 @@ export default function Footer() {
                       {index < phoneLinks.length - 1 && <span className="footer__link-sep">,</span>}
                     </span>
                   ))}
-                </span>
-              </p>
-              <p className="contact-line contact-line--email">
-                <span className="label">Email:</span>
+                </div>
+              </div>
+
+              <div className="contact-line contact-line--email">
+                <span className="contact-label">Email:</span>
                 <a href="mailto:info@echonix.in" className="footer__contact-link footer__contact-link--email">
                   info@echonix.in
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* SECTION D — Footer Bottom */}
         <div className="footer__bottom">
           <p className="copyright">©{new Date().getFullYear()} Echonix Technology Pvt. Ltd.</p>
-          <p className="attribution">Powered by <a href="https://zabios.in" className="bottom-link" target="_blank" rel="noopener">Zabios</a></p>
+          <p className="attribution">
+            Powered by{' '}
+            <a
+              href="https://zabios.in"
+              className="bottom-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Zabios
+            </a>
+          </p>
         </div>
       </div>
     </footer>

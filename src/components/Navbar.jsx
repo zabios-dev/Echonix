@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -146,14 +147,25 @@ export default function Navbar() {
             aria-label="Echonix Technology — Home"
           >
             <div className="logo-mark" aria-hidden="true">
-              <img src="/logo.png" alt="Echonix Technology Logo" />
+              <Image
+                src="/logo.webp"
+                alt="Echonix Technology Logo"
+                width={180}
+                height={75}
+                priority
+                style={{ height: '76px', width: 'auto', display: 'block' }}
+              />
             </div>
             <span className="logo-separator" aria-hidden="true"></span>
             <div className="logo-mark logo-mark--mah" aria-hidden="true">
-              <img
-                src="/mah.png"
+              <Image
+                src="/mah.webp"
                 alt="Mahindra Solarize Logo"
+                width={90}
+                height={48}
                 className="mah-logo-img"
+                priority
+                style={{ height: 'auto', width: 'auto', display: 'block' }}
               />
             </div>
           </Link>
@@ -265,7 +277,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
             >
-              <img src="/whatsapp-white.png" alt="" width="20" height="20" />
+              <Image src="/whatsapp-white.png" alt="" width={20} height={20} />
             </a>
 
             <a href="https://wa.me/919539220888?text=Hi%20Echonix,%20I%20would%20like%20to%20get%20a%20free%20quote." target="_blank" rel="noopener noreferrer" className="btn btn--amber" id="cta-quote-nav">Get Free Quote</a>

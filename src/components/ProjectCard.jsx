@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { viewportOnce } from '../hooks/animations'
 
@@ -34,14 +35,13 @@ export default function ProjectCard({ project, delay = 0, showBadge = false }) {
 
       <div className="gallery-card__img-wrap">
         {hasImage ? (
-          <img
+          <Image
             src={project.image}
             alt={project.alt || project.name}
             className="gallery-card__img"
             loading="lazy"
-            decoding="async"
-            width="600"
-            height="420"
+            width={600}
+            height={420}
             onError={() => setImgError(true)}
           />
         ) : (
