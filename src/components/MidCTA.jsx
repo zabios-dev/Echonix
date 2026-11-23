@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { viewportOnce } from '../hooks/animations'
 
@@ -14,10 +15,12 @@ export default function MidCTA() {
     <section className="midcta" aria-labelledby="midcta-heading">
       {/* Background video/image layer */}
       <div className="midcta__bg" aria-hidden="true">
-        <img
-          src="/heroes/hero-solar.png"
+        <Image
+          src="/heroes/hero-solar.webp"
           alt=""
-          className="midcta__bg-img"
+          fill
+          sizes="100vw"
+          className="midcta__bg-img object-cover"
           loading="lazy"
         />
         <div className="midcta__bg-overlay" />

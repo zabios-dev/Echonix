@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -59,7 +60,7 @@ export default function BlogsPage() {
             {filteredBlogs.map((blog) => (
               <article key={blog.id} className="blog-card" role="listitem">
                 <div className="blog-card__img-wrap">
-                  <img src={blog.image} alt={blog.title} className="blog-card__img" loading="lazy" />
+                  <Image src={blog.image} alt={blog.title} fill sizes="(max-width: 600px) 100vw, 33vw" className="blog-card__img object-cover" loading="lazy" />
                   <span className="blog-card__category">{blog.category}</span>
                 </div>
                 <div className="blog-card__content">

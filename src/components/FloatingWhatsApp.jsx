@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function FloatingWhatsApp() {
@@ -16,7 +17,7 @@ export default function FloatingWhatsApp() {
       whileTap={{ scale: 0.95 }}
     >
       <div className="floating-wa__icon-wrap">
-        <img src="/whatsapp-white.png" alt="" className="floating-wa__svg" style={{ display: 'block' }} />
+        <Image src="/whatsapp-white.png" alt="WhatsApp" width={32} height={32} className="floating-wa__svg" style={{ display: 'block' }} />
         <span className="floating-wa__pulse-dot" />
       </div>
     </motion.a>

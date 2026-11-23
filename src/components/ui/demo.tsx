@@ -1,43 +1,63 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [loaded, setLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    v.play().catch(() => { })
+    const mobile = window.innerWidth < 768
+    setIsMobile(mobile)
+
+    // Only autoplay on desktop to avoid blocking network / battery on mobile
+    if (!mobile) {
+      const v = videoRef.current
+      if (!v) return
+      v.play().catch(() => { })
+    }
   }, [])
 
   return (
     <section className="hero2" aria-label="Hero">
-      {/* ── Video Background ── */}
+      {/* ── Video / Poster Background ── */}
       <div className="hero2__bg">
-        {/* Fallback image — visible until video is ready */}
+        {/* Next.js LCP Hero Image — priority & fetchPriority="high" */}
         <div
           className="hero2__poster"
-          style={{ opacity: loaded ? 0 : 1 }}
+          style={{ opacity: !isMobile && loaded ? 0 : 1 }}
           aria-hidden="true"
-        />
+        >
+          <Image
+            src="/image.webp"
+            alt="Echonix Solar Energy Installation Kerala"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            quality={75}
+            className="object-cover object-center"
+          />
+        </div>
 
-        {/* Video — fades in once ready */}
-        <video
-          ref={videoRef}
-          className="hero2__video"
-          src="/heronew.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onCanPlay={() => setLoaded(true)}
-          aria-hidden="true"
-          style={{ opacity: loaded ? 1 : 0 }}
-        />
+        {/* Video — desktop only autoplay, preload none on mobile */}
+        {!isMobile && (
+          <video
+            ref={videoRef}
+            className="hero2__video"
+            src="/heronew.mp4"
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onCanPlay={() => setLoaded(true)}
+            aria-hidden="true"
+            style={{ opacity: loaded ? 1 : 0 }}
+          />
+        )}
         {/* Dark gradient overlay */}
         <div className="hero2__overlay" />
       </div>

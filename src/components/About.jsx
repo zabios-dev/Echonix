@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { viewportOnce } from '../hooks/animations'
 
@@ -51,7 +52,7 @@ export default function About() {
                 width="100%"
                 height="100%"
                 src="https://res.cloudinary.com/x2u7ub0n/video/upload/v1791043825/hero.webm"
-                poster="/about-team.png"
+                poster="/about-team.webp"
                 controls
                 autoPlay
                 preload="none"
@@ -79,14 +80,13 @@ export default function About() {
                   display: 'block',
                 }}
               >
-                <img
-                  src="/about-team.png"
+                <Image
+                  src="/about-team.webp"
                   alt="Echonix team installing solar panels on a commercial rooftop in Kerala"
                   className="about__image"
-                  width="900"
-                  height="700"
+                  width={900}
+                  height={700}
                   loading="lazy"
-                  decoding="async"
                 />
                 
                 {/* Play Button Overlay */}

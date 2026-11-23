@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Navbar from '../components/Navbar'
 import Hero from '../components/ui/demo'
-import About from '../components/About'
-import Services from '../components/Services'
-import MidCTA from '../components/MidCTA'
-import Gallery from '../components/Gallery'
-import Testimonials from '../components/Testimonials'
-import FAQ from '../components/FAQ'
-import Footer from '../components/Footer'
-import FloatingWhatsApp from '../components/FloatingWhatsApp'
 import SectionReveal from '../components/SectionReveal'
-import AreasWeServe from '../components/AreasWeServe'
+
+// Lazy-load below-the-fold components with next/dynamic to reduce main-thread JS blocking
+const About = dynamic(() => import('../components/About'))
+const MidCTA = dynamic(() => import('../components/MidCTA'))
+const Services = dynamic(() => import('../components/Services'))
+const Gallery = dynamic(() => import('../components/Gallery'))
+const Testimonials = dynamic(() => import('../components/Testimonials'))
+const FAQ = dynamic(() => import('../components/FAQ'))
+const AreasWeServe = dynamic(() => import('../components/AreasWeServe'))
+const Footer = dynamic(() => import('../components/Footer'))
+const FloatingWhatsApp = dynamic(() => import('../components/FloatingWhatsApp'))
 
 
 export const metadata: Metadata = {

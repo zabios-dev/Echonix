@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -20,7 +21,7 @@ const services = [
       "Connect your solar system directly to the KSEB grid and use the power you generate. Excess electricity can be exported to the grid through net metering, helping bring your electricity bills close to zero.",
     tags: ["KSEB Net-Metering", "Subsidy Eligible", "No Battery Costs"],
     icon: Grid3X3,
-    image: "/images/services/on-grid.jpg",
+    image: "/images/services/on-grid.webp",
   },
   {
     id: "off-grid",
@@ -30,7 +31,7 @@ const services = [
       "Generate, store and use your own solar power without depending on the electrical grid. A reliable solution for properties that experience frequent or long-duration power cuts.",
     tags: ["Battery Backup Included", "Power Cut Protection", "100% Grid Independent"],
     icon: BatteryCharging,
-    image: "/images/services/off-grid.jpg",
+    image: "/images/services/off-grid.webp",
   },
   {
     id: "hybrid",
@@ -40,7 +41,7 @@ const services = [
       "Stay connected to the KSEB grid while storing solar energy in batteries. Hybrid systems provide backup during outages while allowing you to use or export solar power during normal grid hours.",
     tags: ["Grid + Battery Backup", "Outage Protection", "Smart Energy Management"],
     icon: Zap,
-    image: "/images/services/hybrid.png",
+    image: "/images/services/hybrid.webp",
   },
   {
   id: "inverters",
@@ -54,7 +55,7 @@ const services = [
     "Professional Installation",
   ],
   icon: Cpu,
-  image: "/images/services/inverter.png",
+  image: "/images/services/inverter.webp",
 },
 ];
 
@@ -171,16 +172,22 @@ export default function Services() {
           <div className="hidden md:block lg:col-span-7 lg:sticky lg:top-28">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] shadow-[0_20px_60px_rgba(16,39,31,0.15)] sm:aspect-[16/10]">
               <AnimatePresence mode="wait">
-                <motion.img
+                <motion.div
                   key={activeService.id}
-                  src={activeService.image}
-                  alt={activeService.title}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+                  className="absolute inset-0 h-full w-full"
+                >
+                  <Image
+                    src={activeService.image}
+                    alt={activeService.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className="object-cover"
+                  />
+                </motion.div>
               </AnimatePresence>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
