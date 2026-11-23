@@ -27,4 +27,9 @@ dist-ssr
 .next/
 
 
+# Package managers (bun only)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
 report.md
