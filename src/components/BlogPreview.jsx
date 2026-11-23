@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeUp, viewportOnce } from '../hooks/animations'
 import { useIsMobile } from '../hooks/useIsMobile'
@@ -10,7 +11,7 @@ function BlogCard({ blog }) {
   return (
     <article className="blog-card">
       <div className="blog-card__img-wrap">
-        <img src={blog.image} alt={blog.title} className="blog-card__img" loading="lazy" />
+        <Image src={blog.image} alt={blog.title} fill sizes="(max-width: 600px) 100vw, 33vw" className="blog-card__img object-cover" loading="lazy" />
         <span className="blog-card__category">{blog.category}</span>
       </div>
       <div className="blog-card__content">

@@ -1,9 +1,24 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import LenisProvider from '../components/LenisProvider'
 import ConversionTracker from '../components/ConversionTracker'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+  weight: ['400', '500', '600', '700'],
+})
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['600', '700', '800'],
+})
 
 export const metadata: Metadata = {
   title: {
@@ -109,19 +124,12 @@ export default function RootLayout({
             gtag('config', 'G-10W2YPK7PW');
           `}
         </Script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preload" as="image" href="/heroes/hero-solar.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body className={`${inter.variable} ${plusJakartaSans.variable}`}>
         <LenisProvider>{children}</LenisProvider>
         <ConversionTracker />
         <SpeedInsights />

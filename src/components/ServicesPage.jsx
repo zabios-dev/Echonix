@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -144,7 +145,7 @@ const mobileData = [
       'Ideal for homes & businesses',
     ],
     mostPopular: true,
-    image: '/images/services/on-grid.jpg',
+    image: '/images/services/on-grid.webp',
     whatsapp: 'Hi Echonix, I would like to enquire about On-Grid Solar for my site.',
   },
   {
@@ -161,7 +162,7 @@ const mobileData = [
       'Ideal for remote locations',
     ],
     mostPopular: false,
-    image: '/images/services/off-grid.jpg',
+    image: '/images/services/off-grid.webp',
     whatsapp: 'Hi Echonix, I would like to enquire about Off-Grid Solar for my site.',
   },
   {
@@ -178,7 +179,7 @@ const mobileData = [
       'Smart energy management',
     ],
     mostPopular: false,
-    image: '/images/services/hybrid.png',
+    image: '/images/services/hybrid.webp',
     whatsapp: 'Hi Echonix, I would like to enquire about Hybrid Solar for my site.',
   },
   {
@@ -195,7 +196,7 @@ const mobileData = [
       'After-sales support',
     ],
     mostPopular: false,
-    image: '/images/services/inverter.png',
+    image: '/images/services/inverter.webp',
     whatsapp: 'Hi Echonix, I would like to enquire about Home Inverters & Batteries for my site.',
   },
 ]
@@ -389,16 +390,19 @@ export default function ServicesPage() {
                   .map((service) => (
                     <motion.div
                       key={service.id}
-                      className="services-selector__visual"
+                      className="services-selector__visual relative"
                       initial={{ opacity: 0, x: 18 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -18 }}
                       transition={{ duration: 0.35 }}
                     >
-                      <img
+                      <Image
                         src={service.image}
                         alt={service.title}
-                        className="services-selector__image"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="services-selector__image object-cover"
+                        loading="lazy"
                       />
 
                       <div className="services-selector__overlay" />
@@ -505,11 +509,14 @@ export default function ServicesPage() {
                     transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {/* Background image — top-right of card */}
-                    <img
+                    <Image
                       src={item.image}
                       alt=""
                       aria-hidden="true"
-                      className="ssp-mobile__card-img"
+                      fill
+                      sizes="(max-width: 600px) 100vw, 50vw"
+                      className="ssp-mobile__card-img object-cover"
+                      loading="lazy"
                     />
                     {/* Left-fade overlay */}
                     <div className="ssp-mobile__card-overlay ssp-mobile__card-overlay--left" />

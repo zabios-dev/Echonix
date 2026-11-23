@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { fadeUp, viewportOnce } from '../hooks/animations'
@@ -22,13 +23,14 @@ function GalleryCard({ p, index = 0 }) {
       transition={{ delay: index * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="gal__card-inner">
-        <div className="gal__img-wrap">
-          <img
+        <div className="gal__img-wrap relative">
+          <Image
             src={p.image}
             alt={p.alt || p.name}
-            className="gal__img"
+            fill
+            sizes="(max-width: 600px) 85vw, (max-width: 1024px) 50vw, 33vw"
+            className="gal__img object-cover"
             loading="lazy"
-            decoding="async"
           />
         </div>
         {/* Overlay — always visible, with gradient fade */}

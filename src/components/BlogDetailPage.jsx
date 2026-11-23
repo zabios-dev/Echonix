@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -58,7 +59,7 @@ export default function BlogDetailPage({ id }) {
           </div>
 
           <div className="blog-article__featured-img-wrap">
-            <img src={blog.image} alt={blog.title} className="blog-article__featured-img" />
+            <Image src={blog.image} alt={blog.title} width={1000} height={550} className="blog-article__featured-img" priority />
           </div>
 
           <div 
@@ -90,7 +91,7 @@ export default function BlogDetailPage({ id }) {
                 {related.map((post) => (
                   <article key={post.id} className="blog-card blog-card--related">
                     <div className="blog-card__img-wrap">
-                      <img src={post.image} alt={post.title} className="blog-card__img" />
+                      <Image src={post.image} alt={post.title} fill sizes="(max-width: 600px) 100vw, 33vw" className="blog-card__img object-cover" loading="lazy" />
                       <span className="blog-card__category">{post.category}</span>
                     </div>
                     <div className="blog-card__content">

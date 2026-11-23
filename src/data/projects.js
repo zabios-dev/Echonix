@@ -5,7 +5,7 @@ const projects = [
   {
     id: 'gallery-university',
     name: 'Kannur University',
-    image: '/kannuruniveristy.jpg',
+    image: '/kannuruniveristy.webp',
     alt: 'Solar installation at Kannur University',
     location: 'Kannur, Kerala',
     type: 'Institutional',
@@ -18,7 +18,7 @@ const projects = [
   {
     id: 'gallery-polytechnic',
     name: "Women's Polytechnic, Kottakkal",
-    image: '/womenspoly.jpeg',
+    image: '/womenspoly.webp',
     alt: "Rooftop solar installation at Women's Polytechnic, Kottakkal",
     location: 'Kottakkal, Malappuram, Kerala',
     type: 'Institutional',
@@ -31,7 +31,7 @@ const projects = [
   {
     id: 'gallery-civil-station',
     name: 'Mini Civil Station, Ponnani',
-    image: '/minicivl.jpeg',
+    image: '/minicivl.webp',
     alt: 'Solar installation at Mini Civil Station, Ponnani',
     location: 'Ponnani, Malappuram, Kerala',
     type: 'Government',
@@ -44,7 +44,7 @@ const projects = [
   {
     id: 'gallery-ksidc',
     name: 'KSIDC Industrial Installation',
-    image: '/KSIDCkoothuparamb.png',
+    image: '/KSIDCkoothuparamb.webp',
     alt: 'KSIDC solar installation at Koothuparamba',
     location: 'Koothuparamba, Kerala',
     type: 'Industrial',
@@ -57,7 +57,7 @@ const projects = [
   {
     id: 'gallery-residential',
     name: 'GHSS Edappal, Malappuram',
-    image: '/ghssedapal.png',
+    image: '/ghssedapal.webp',
     alt: 'Solar installation at GHSS Edappal',
     location: 'Edappal, Malappuram, Kerala',
     type: 'Institutional',
@@ -70,7 +70,7 @@ const projects = [
   {
     id: 'gallery-commercial',
     name: 'St. James Azheekkode',
-    image: '/stjames.jpeg',
+    image: '/stjames.webp',
     alt: 'Solar installation at St. James, Azheekkode',
     location: 'Azheekkode, Kerala',
     type: 'Institutional',

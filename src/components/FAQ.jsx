@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, viewportOnce } from '../hooks/animations'
 
@@ -110,10 +111,12 @@ export default function FAQ() {
 
           {/* Image card with CTA overlay */}
           <div className="faq__img-card">
-            <img
-              src="/heroes/hero-solar.png"
+            <Image
+              src="/heroes/hero-solar.webp"
               alt="Solar panels installation"
-              className="faq__img"
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="faq__img object-cover"
               loading="lazy"
             />
             <div className="faq__img-overlay">

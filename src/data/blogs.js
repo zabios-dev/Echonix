@@ -11,7 +11,7 @@ const blogs = [
     date: 'June 28, 2025',
     readTime: '5 min read',
     category: 'Subsidies',
-    image: '/project-residential.png',
+    image: '/project-residential.webp',
     author: 'Suresh Kumar (Liaison Head)',
     content: `
 <p>In 2024, the Government of India launched the **PM-Surya Ghar: Muft Bijli Yojana** to promote rooftop solar systems across residential households. In Kerala, this initiative has seen massive adoption, managed in coordination with <strong>ANERT</strong> (Agency for New and Renewable Energy Research and Technology) and <strong>KSEB</strong> (Kerala State Electricity Board).</p>
@@ -48,7 +48,7 @@ const blogs = [
     date: 'May 14, 2025',
     readTime: '6 min read',
     category: 'Guides',
-    image: '/project-civil-station.png',
+    image: '/project-civil-station.webp',
     author: 'Engr. Faisal Rahiman (Head of Engineering)',
     content: `
 <p>Choosing the right solar system depends heavily on your specific geography, power bill, and how frequently you experience load shedding. Let's compare the three primary solar configurations popular in Kerala.</p>
@@ -85,7 +85,7 @@ const blogs = [
     date: 'April 02, 2025',
     readTime: '4 min read',
     category: 'Maintenance',
-    image: '/project-industrial.png',
+    image: '/project-industrial.webp',
     author: 'Vipin Das (Lead Technician)',
     content: `
 <p>Kerala is known for its heavy monsoon season, spanning from June to September. Many prospective clients ask us: *Do solar panels work in rain?* and *How do we protect them?* Here is what you need to know to ensure optimal performance during wet months.</p>
